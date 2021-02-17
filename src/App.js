@@ -1,5 +1,5 @@
 import './App.scss';
-import WeekNavigation from './containers/WeekNavigation/weekNavigation';
+import WeekNavigation from './containers/WeekNavigation/WeekNavigation';
 
 function App() {
   return (
