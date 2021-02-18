@@ -10,8 +10,6 @@ const WEEK_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Satu
 
 const WeekNavigation = (props) => {
 
-    const [day, setDay] = useState(dayjs().day())
-    const [week, setWeek] = useState(dayjs().week());
     const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'))
 
     const dayOfWeek = () => {
@@ -24,8 +22,23 @@ const WeekNavigation = (props) => {
     }
 
     const weekPeriod = () => {
+        const dayNumber = dayjs(date).day();
         const week = dayjs(date).week();
-        return `${dayjs(date).day(1).format('DD')} - ${dayjs().week(week+1).day(0).format('DD.MM.YYYY')}`
+        if (dayNumber === 0) {
+            return `${dayjs(date).week(week-1).day(1).format('DD')} - ${dayjs(date).format('DD.MM.YYYY')}`
+        } else {
+            return `${dayjs(date).day(1).format('DD')} - ${dayjs().week(week+1).day(0).format('DD.MM.YYYY')}`
+        }
+    }
+
+    const weekNumber = () => {
+        const dayNumber = dayjs(date).day();
+        const week = dayjs(date).week();
+        if (dayNumber === 0) {
+            return `${dayjs(date).week(week - 1).week()}`
+        } else {
+            return `${dayjs(date).week()}`
+        }
     }
 
     return (
@@ -33,7 +46,7 @@ const WeekNavigation = (props) => {
             <FontAwesomeIcon icon='angle-double-left' onClick={props.changeWeek}/>
             <FontAwesomeIcon icon='angle-left' className={classes.dayData} onClick={props.changeWeek}/>
             <hgroup>
-                <h2>Week {dayjs(date).week()}</h2>
+                <h2>Week {weekNumber()}</h2>
                 <h3 className={classes.dayData}>{dayOfWeek()}</h3>
                 <h3 className={classes.weekData}>{weekPeriod()}</h3>
             </hgroup>
