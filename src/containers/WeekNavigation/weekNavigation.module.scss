@@ -3,7 +3,39 @@
 
 .weekNav {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5rem auto;
+    padding: 1rem;
+    box-sizing: border-box;
     background-color: $bgColor;
+    border-radius: 0.5rem;
+    width: 30vw;
+
+    @include mq(smartphone) {
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    svg {
+        font-size: 2.8rem;
+        padding: 0.5rem;
+        @include mq(smartphone) {
+            width: 1rem;
+        }
+    }
+
+    hgroup {
+        flex: 1;
+        @include mq(smartphone) {
+            margin: 1rem;
+            
+            h2, h3 {
+                margin: 0.5rem 0.5rem 0 0.5rem;
+            }
+        }
+    }
+
     .dayData {
         display: none;
         @include mq(smartphone) {
@@ -15,10 +47,5 @@
         @include mq(smartphone) {
             display: none;
         }
-    }
-
-    .arrow {
-
-    }
-    
+    }    
 }
