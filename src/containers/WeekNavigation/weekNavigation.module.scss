@@ -23,6 +23,10 @@
         @include mq(smartphone) {
             width: 1rem;
         }
+
+        path {
+            pointer-events: none;
+        }
     }
 
     hgroup {
