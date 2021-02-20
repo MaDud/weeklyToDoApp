@@ -8,35 +8,16 @@ dayjs.extend(weekOfWeek)
 
 const WEEK_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
-const WeekNavigation = (props) => {
+const WeekNavigation = () => {
 
-    const [date, setDate] = useState(dayjs())
-
-    const dayOfWeek = () => {
-        const dayNumber = dayjs(date).day()
-        if (dayNumber === 1) {
-            return WEEK_DAYS[6]
-        } else {
-            return WEEK_DAYS[dayNumber - 1]
-        }
-    }
-
-    const weekPeriod = () => {
-        const dayNumber = dayjs(date).day();
-        const week = dayjs(date).week();
-        if (dayNumber === 0) {
-            return `${dayjs(date).week(week-1).day(1).format('DD')} - ${dayjs(date).format('DD.MM.YYYY')}`
-        } else {
-            return `${dayjs(date).day(1).format('DD')} - ${dayjs().week(week+1).day(0).format('DD.MM.YYYY')}`
-        }
-    }
+    const [date, setDate] = useState(dayjs());
 
     const changeView = e => {
         const id = e.target.id;
 
         if ( id === 'prevWeek' || id === 'nextWeek') {
-            const currentWeek = dayjs(date).week();
-            const currentYear = dayjs(date).year();
+            const currentWeek = date.week();
+            const currentYear = date.year();
 
             if (currentWeek === 1 && id === 'prevWeek') {
                 setDate(dayjs(date).year(currentYear-1).week(52));
@@ -49,8 +30,8 @@ const WeekNavigation = (props) => {
 
             id === 'prevWeek' ? setDate(dayjs(date).week(currentWeek -1 )) : setDate(dayjs(date).week(currentWeek + 1))
         } else {
-            const currentDay = dayjs(date).date();
-            const monthLength = dayjs(date).daysInMonth();
+            const currentDay = date.date();
+            const monthLength = date.daysInMonth();
 
             if (currentDay === 1 && id === 'prevDay') {
                 const prevMonthLength = dayjs(date).month(-1).daysInMonth()
@@ -61,13 +42,38 @@ const WeekNavigation = (props) => {
                 setDate(dayjs(date).month(+1).date(1));
                 return
             } 
+
             id === 'prevDay' ? setDate(dayjs(date).date(currentDay-1)) : setDate(dayjs(date).date(currentDay+1))
         }
     }
 
+    const dayOfWeek = () => {
+        const dayNumber = date.day()
+        if (dayNumber === 0) {
+            return WEEK_DAYS[6]
+        } else {
+            return WEEK_DAYS[dayNumber - 1]
+        }
+    }
+
+    const weekPeriod = () => {
+        const weekDay = date.day();
+        const currentWeekNumber = date.week()
+        let weekStart = dayjs(date).day(1).format('DD.MM.YYYY');
+        let weekEnd = dayjs(date).week( currentWeekNumber +1).day(0).format('DD.MM.YYYY')
+
+        if ( weekDay === 0 ) {
+            weekStart = dayjs(date).week(currentWeekNumber -1).day(1).format('DD.MM.YYYY')
+            weekEnd = date.format('DD.MM.YYYY')
+        }
+
+        return `${weekStart} - ${weekEnd}`
+        
+    }
+
     const weekNumber = () => {
-        const dayNumber = dayjs(date).day();
-        const week = dayjs(date).week();
+        const dayNumber = date.day();
+        const week = date.week();
         if (dayNumber === 0) {
             return `${dayjs(date).week(week - 1).week()}`
         } else {
