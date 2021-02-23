@@ -9,8 +9,7 @@ const TasksNavigation = () => {
 
     const [date, setDate] = useContext(DateContex)
 
-    const changeView = e => {
-        const id = e.target.id;
+    const changeView = id => {
 
         if ( id === 'prevWeek' || id === 'nextWeek') {
             const currentWeek = date.isoWeek();
@@ -64,7 +63,7 @@ const TasksNavigation = () => {
     return (
         <React.Fragment>
             <WeekNavigation 
-                changeView = {(e) => changeView(e)}
+                changeView = {changeView}
                 dayOfWeek = {dayOfWeek()}
                 weekPeriod = {weekPeriod()}
                 weekNumber = {weekNumber()}
