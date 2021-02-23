@@ -1,6 +1,6 @@
 import './App.scss';
 import {DateProvider} from './context/dateContex';
-import WeekNavigation from './containers/WeekNavigation/WeekNavigation';
+import TasksNavigation from './containers/TasksNavigation/TasksNavigation';
 
 //fontAwesome
 import {library} from '@fortawesome/fontawesome-svg-core';
@@ -10,7 +10,7 @@ function App() {
   library.add(faAngleDoubleRight, faAngleDoubleLeft, faAngleLeft, faAngleRight)
   return (
     <DateProvider>
-      <WeekNavigation />
+      <TasksNavigation />
     </DateProvider>
   );
 }

@@ -1,12 +1,11 @@
 import React, {useContext} from 'react';
-import * as classes from './weekNavigation.module.scss';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import dayjs from 'dayjs';
 import {DateContex} from '../../context/dateContex';
+import WeekNavigation from '../../components/WeekNavigation/weekNavigation';
 
 const WEEK_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
-const WeekNavigation = () => {
+const TasksNavigation = () => {
 
     const [date, setDate] = useContext(DateContex)
 
@@ -63,18 +62,15 @@ const WeekNavigation = () => {
     }
 
     return (
-        <nav className={classes.weekNav}>
-            <FontAwesomeIcon icon='angle-double-left' onClick={(e) => changeView(e)} id='prevWeek'/>
-            <FontAwesomeIcon icon='angle-left' className={classes.dayData} onClick={(e) => changeView(e)} id='prevDay'/>
-            <hgroup>
-                <h2>Week {weekNumber()}</h2>
-                <h3 className={classes.dayData}>{dayOfWeek()}</h3>
-                <h3 className={classes.weekData}>{weekPeriod()}</h3>
-            </hgroup>
-            <FontAwesomeIcon icon='angle-right' className={classes.dayData} onClick={(e) => changeView(e)} id='nextDay'/>
-            <FontAwesomeIcon icon='angle-double-right' onClick={(e) => changeView(e)} id='nextWeek'/>
-        </nav>
+        <React.Fragment>
+            <WeekNavigation 
+                changeView = {(e) => changeView(e)}
+                dayOfWeek = {dayOfWeek()}
+                weekPeriod = {weekPeriod()}
+                weekNumber = {weekNumber()}
+            />
+        </React.Fragment>
     )
 }
 
-export default WeekNavigation
+export default TasksNavigation
