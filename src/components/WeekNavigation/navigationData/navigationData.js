@@ -1,5 +1,5 @@
 import React from 'react';
-import './navigationData.scss';
+import '../../../styles/weekNavigation/navigationData.scss';
 
 const navigationData = (props) => {
 

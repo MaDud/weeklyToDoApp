@@ -1,5 +1,5 @@
-@import '../../global_styles/__mq.scss';
-@import '../../global_styles//__general.scss';
+@import '../global_styles/__mq';
+@import '../global_styles/__general';
 
 .weekNav {
     display: flex;

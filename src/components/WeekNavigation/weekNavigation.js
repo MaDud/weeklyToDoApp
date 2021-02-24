@@ -1,5 +1,5 @@
 import React from 'react';
-import './weekNavigation.scss';
+import '../../styles/weekNavigation/weekNavigation.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import NavigationData from './navigationData/navigationData';
 
