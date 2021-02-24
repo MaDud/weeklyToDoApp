@@ -1,0 +1,43 @@
+@import '../../global_styles/__mq.scss';
+@import '../../global_styles//__general.scss';
+
+.weekNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5rem auto;
+    padding: 1rem;
+    box-sizing: border-box;
+    background-color: $bgColor;
+    border-radius: 0.5rem;
+    width: 30vw;
+    font-family: $titleFont;
+
+    &__arrow {
+        font-size: 2.5rem;
+        padding: 0.5rem;
+        color: $colorTitle;
+
+        path {
+            pointer-events: none;
+        }
+    }
+
+    &__arrow--day {
+        display: none;
+    }    
+
+    @include mq(smartphone) {
+        width: 100%;
+        padding: 0.5rem;
+
+        &__arrow {
+            width: 1rem;
+            font-size: 1.8rem;
+        }
+
+        &__arrow--day {
+            display: inline-block;
+        }
+    }
+}

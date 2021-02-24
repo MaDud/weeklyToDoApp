@@ -1,0 +1,38 @@
+@import '../../../global_styles/_mq';
+@import '../../../global_styles/__general';
+
+.weekInfo {
+    flex: 1;
+    text-align: center;
+    color: $colorTitle;
+
+    &__mainTitle, &__subtitle {
+        margin: 0.5rem auto;
+    }
+
+    &__mainTitle {
+        font-size: 2rem;
+    }
+
+    &__subtitle {
+        font-size: 1.3rem;
+    }
+
+    &__subtitle--day {
+        display: none;
+    }
+
+    @include mq(smartphone) {
+        &__mainTitle, &__subtitle {
+            margin: 0;
+        }
+
+        &__subtitle--week {
+            display: none; 
+        }
+
+        &__subtitle--day {
+            display: inline;
+        }
+    }
+}
