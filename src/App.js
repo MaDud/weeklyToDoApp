@@ -1,5 +1,5 @@
 import {DateProvider} from './context/dateContex';
-import TasksNavigation from './containers/TasksNavigation/TasksNavigation';
+import TasksNavigation from './components/TasksNavigation/TasksNavigation';
 
 //fontAwesome
 import {library} from '@fortawesome/fontawesome-svg-core';

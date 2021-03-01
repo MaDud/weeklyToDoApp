@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import dayjs from 'dayjs';
 import {DateContex} from '../../context/dateContex';
-import WeekNavigation from '../../components/WeekNavigation/weekNavigation';
+import WeekNavigation from './weekNavigation';
 
 const WEEK_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
