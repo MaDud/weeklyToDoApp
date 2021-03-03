@@ -3,6 +3,12 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+//dayjs
+import dayjs from 'dayjs';
+import isoWeek from 'dayjs/plugin/isoWeek';
+import isoWeeksInYear from 'dayjs/plugin/isoWeeksInYear';
+import isLeapYear from 'dayjs/plugin/isLeapYear';
+
 //redux
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
@@ -11,6 +17,10 @@ import DateReducer from './store/reductors/date';
 //fontAwesome
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {faAngleDoubleRight, faAngleDoubleLeft, faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
+
+dayjs.extend(isoWeek);
+dayjs.extend(isoWeeksInYear);
+dayjs.extend(isLeapYear);
 
 const store = createStore(DateReducer);
 
