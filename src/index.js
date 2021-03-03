@@ -6,12 +6,13 @@ import reportWebVitals from './reportWebVitals';
 //redux
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-
-const store = createStore();
+import DateReducer from './store/reductors/date';
 
 //fontAwesome
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {faAngleDoubleRight, faAngleDoubleLeft, faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
+
+const store = createStore(DateReducer);
 
 library.add(faAngleDoubleRight, faAngleDoubleLeft, faAngleLeft, faAngleRight)
 
