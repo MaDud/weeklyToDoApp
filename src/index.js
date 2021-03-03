@@ -1,8 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+//fontAwesome
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {faAngleDoubleRight, faAngleDoubleLeft, faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
+
+library.add(faAngleDoubleRight, faAngleDoubleLeft, faAngleLeft, faAngleRight)
 
 ReactDOM.render(
   <React.StrictMode>
