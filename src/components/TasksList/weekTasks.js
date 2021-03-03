@@ -1,7 +1,16 @@
 import React from 'react';
 import '../../styles/TasksList/weekTasks.scss';
 
-const WEEK_SHORT = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+const WEEK_SHORT = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+const tasks = {
+    1: {
+        name: 'task1'        
+    },
+    2: {
+        name: 'task2'        
+    }
+}
 
 const weekTasks = props => {
 
@@ -12,6 +21,40 @@ const weekTasks = props => {
                         index !== props.currentDay ? "tasksList__title--invisible" :null].join(' ')}>
                     {day}
                 </th>
+    });
+
+    const tableBody = Object.keys(tasks).map( (task, index) => {
+        return <tr className="tasksList__row" key={task}>
+                    <td className= {["tasksList__day",
+                                    index !== props.currentDay ? "tasksList__title--invisible" :null].join(' ')}>
+                                    
+                    </td>
+                    <td className= {["tasksList__day",
+                                    index !== props.currentDay ? "tasksList__title--invisible" :null].join(' ')}>
+                                    
+                    </td>
+                    <td className= {["tasksList__day",
+                                    index !== props.currentDay ? "tasksList__title--invisible" :null].join(' ')}>
+                                    
+                    </td>
+                    <td className= {["tasksList__day",
+                                    index !== props.currentDay ? "tasksList__title--invisible" :null].join(' ')}>
+                                    
+                    </td>
+                    <td className= {["tasksList__day",
+                                    index !== props.currentDay ? "tasksList__title--invisible" :null].join(' ')}>
+                                    
+                    </td>
+                    <td className= {["tasksList__day",
+                                    index !== props.currentDay ? "tasksList__title--invisible" :null].join(' ')}>
+                                    
+                    </td>
+                    <td className= {["tasksList__day",
+                                    index !== props.currentDay ? "tasksList__title--invisible" :null].join(' ')}>
+                                    
+                    </td>
+                    <td className = "taskList__task">{tasks[task].name}</td>
+                </tr>
     })
 
     return (
@@ -23,7 +66,7 @@ const weekTasks = props => {
                 </tr>
             </thead>
             <tbody className="tasksList__body">
-
+                {tableBody}
             </tbody>
         </table>
     )
