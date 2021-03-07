@@ -1,16 +1,8 @@
 import React from 'react';
 import '../../styles/TasksList/weekTasks.scss';
+import {connect} from 'react-redux';
 
 const WEEK_SHORT = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-
-const tasks = {
-    1: {
-        name: 'task1'        
-    },
-    2: {
-        name: 'task2'        
-    }
-}
 
 const weekTasks = props => {
 
@@ -23,37 +15,18 @@ const weekTasks = props => {
                 </th>
     });
 
-    const tableBody = Object.keys(tasks).map( (task, index) => {
+    const tasksControl = props.weekTimestamps.map( (day, index) => {
+        return <td key={index}
+                className={["tasksList__day",
+                            index !== props.currentDay ? "tasksList__title--invisible" :null].join(' ')}>
+                    <input type="checkbox" id={day} />
+                </td>
+    })
+
+    const tableBody = Object.keys(props.tasks).map( task => {
         return <tr className="tasksList__row" key={task}>
-                    <td className= {["tasksList__day",
-                                    index !== props.currentDay ? "tasksList__title--invisible" :null].join(' ')}>
-                                    
-                    </td>
-                    <td className= {["tasksList__day",
-                                    index !== props.currentDay ? "tasksList__title--invisible" :null].join(' ')}>
-                                    
-                    </td>
-                    <td className= {["tasksList__day",
-                                    index !== props.currentDay ? "tasksList__title--invisible" :null].join(' ')}>
-                                    
-                    </td>
-                    <td className= {["tasksList__day",
-                                    index !== props.currentDay ? "tasksList__title--invisible" :null].join(' ')}>
-                                    
-                    </td>
-                    <td className= {["tasksList__day",
-                                    index !== props.currentDay ? "tasksList__title--invisible" :null].join(' ')}>
-                                    
-                    </td>
-                    <td className= {["tasksList__day",
-                                    index !== props.currentDay ? "tasksList__title--invisible" :null].join(' ')}>
-                                    
-                    </td>
-                    <td className= {["tasksList__day",
-                                    index !== props.currentDay ? "tasksList__title--invisible" :null].join(' ')}>
-                                    
-                    </td>
-                    <td className = "taskList__task">{tasks[task].name}</td>
+                    {tasksControl}
+                    <td className = "taskList__task">{props.tasks[task].name}</td>
                 </tr>
     })
 
@@ -73,4 +46,10 @@ const weekTasks = props => {
 
 };
 
-export default weekTasks
+const mapStateToProps = state => {
+    return {
+        tasks: state.tasks.tasks
+    }
+}
+
+export default connect(mapStateToProps)(weekTasks)
