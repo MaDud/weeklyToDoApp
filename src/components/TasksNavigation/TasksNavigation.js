@@ -53,7 +53,7 @@ const TasksNavigation = (props) => {
 
 const mapStateToProps = state => {
     return {
-        date: state.date
+        date: state.date.date
     }
 }
 

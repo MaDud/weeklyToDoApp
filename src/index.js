@@ -10,9 +10,10 @@ import isoWeeksInYear from 'dayjs/plugin/isoWeeksInYear';
 import isLeapYear from 'dayjs/plugin/isLeapYear';
 
 //redux
-import {createStore} from 'redux';
+import {combineReducers, createStore} from 'redux';
 import {Provider} from 'react-redux';
 import DateReducer from './store/reductors/date';
+import TasksReducer from './store/reductors/tasks';
 
 //fontAwesome
 import {library} from '@fortawesome/fontawesome-svg-core';
@@ -22,7 +23,12 @@ dayjs.extend(isoWeek);
 dayjs.extend(isoWeeksInYear);
 dayjs.extend(isLeapYear);
 
-const store = createStore(DateReducer);
+const reductor = combineReducers({
+  date: DateReducer,
+  tasks: TasksReducer
+})
+
+const store = createStore(reductor);
 
 library.add(faAngleDoubleRight, faAngleDoubleLeft, faAngleLeft, faAngleRight)
 
