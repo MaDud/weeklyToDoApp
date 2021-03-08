@@ -15,6 +15,11 @@ import {Provider} from 'react-redux';
 import DateReducer from './store/reductors/date';
 import TasksReducer from './store/reductors/tasks';
 
+//firestore
+import firebase from './fbConfig';
+import {ReactReduxFirebaseProvider, firebaseReducer} from 'react-redux-firebase';
+import { createFirestoreInstance, firestoreReducer } from 'redux-firestore'
+
 //fontAwesome
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {faAngleDoubleRight, faAngleDoubleLeft, faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
@@ -25,17 +30,27 @@ dayjs.extend(isLeapYear);
 
 const reductor = combineReducers({
   date: DateReducer,
-  tasks: TasksReducer
+  tasks: TasksReducer,
+  firebase: firebaseReducer,
+  firestore: firestoreReducer
 })
 
 const store = createStore(reductor);
+
+const rrfProps = {
+  firebase,
+  dispatch: store.dispatch,
+  createFirestoreInstance
+}
 
 library.add(faAngleDoubleRight, faAngleDoubleLeft, faAngleLeft, faAngleRight)
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <ReactReduxFirebaseProvider {...rrfProps}>
+        <App />
+      </ReactReduxFirebaseProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
