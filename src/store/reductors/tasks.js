@@ -14,6 +14,12 @@ const initialState = {
 const TasksReducer = (state = initialState, action) => {
 
     switch (action.type) {
+        case actionsTypes.ADD_TASK: 
+            return {
+                ...state,
+                tasks: {...state.tasks,
+                        [action.id]: action.data}
+            }
         default:
             return state
     }
