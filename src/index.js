@@ -10,15 +10,14 @@ import isoWeeksInYear from 'dayjs/plugin/isoWeeksInYear';
 import isLeapYear from 'dayjs/plugin/isLeapYear';
 
 //redux
-import {combineReducers, createStore} from 'redux';
+import {combineReducers, createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import DateReducer from './store/reductors/date';
 import TasksReducer from './store/reductors/tasks';
 
-//firestore
-import firebase from './fbConfig';
-import {ReactReduxFirebaseProvider, firebaseReducer} from 'react-redux-firebase';
-import { createFirestoreInstance, firestoreReducer } from 'redux-firestore'
+//redux-saga
+import createSagaMiddleware from 'redux-saga';
+import {tasksWatcher} from './store/sagas/index';
 
 //fontAwesome
 import {library} from '@fortawesome/fontawesome-svg-core';
@@ -28,29 +27,22 @@ dayjs.extend(isoWeek);
 dayjs.extend(isoWeeksInYear);
 dayjs.extend(isLeapYear);
 
+const sagaMiddleware = createSagaMiddleware();
+
 const reductor = combineReducers({
   date: DateReducer,
-  tasks: TasksReducer,
-  firebase: firebaseReducer,
-  firestore: firestoreReducer
+  tasks: TasksReducer
 })
 
-const store = createStore(reductor);
-
-const rrfProps = {
-  firebase,
-  dispatch: store.dispatch,
-  createFirestoreInstance
-}
+const store = createStore(reductor, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(tasksWatcher)
 
 library.add(faAngleDoubleRight, faAngleDoubleLeft, faAngleLeft, faAngleRight)
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ReactReduxFirebaseProvider {...rrfProps}>
-        <App />
-      </ReactReduxFirebaseProvider>
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
