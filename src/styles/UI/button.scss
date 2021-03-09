@@ -1,0 +1,15 @@
+@import '../global_styles/__mq';
+@import '../global_styles/__general';
+
+.button {
+    font-family: $titleFont;
+    padding: 0.5rem 1rem;
+    box-sizing: border-box;
+    border:none;
+    border-radius: 0.5rem;
+    font-size: 1.5rem; 
+    color: $bgColor;
+    background-color: $colorTitle;
+    
+
+}
