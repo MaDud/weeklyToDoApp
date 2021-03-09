@@ -1,15 +1,8 @@
 import * as actionsTypes from '../actions/actionsTypes';
 
 const initialState = {
-    tasks: {
-        1: {
-            name: 'task1',        
-        },
-        2: {
-            name: 'task2'        
-        }
-    },
-    loading: false,
+    tasks: {},
+    loading: true,
     error: null
 }
 

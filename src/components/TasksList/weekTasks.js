@@ -30,7 +30,7 @@ const weekTasks = props => {
                 </tr>
     })
 
-    return (
+    return (    
         <table className="tasksList">
             <thead className="tasksList__head">
                 <tr className="tasksList__row">
@@ -42,13 +42,15 @@ const weekTasks = props => {
                 {tableBody}
             </tbody>
         </table>
+       
     )
 
 };
 
 const mapStateToProps = state => {
     return {
-        tasks: state.tasks.tasks
+        tasks: state.tasks.tasks,
+        loading: state.tasks.loading
     }
 }
 

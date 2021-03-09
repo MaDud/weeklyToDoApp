@@ -2,6 +2,7 @@ import React from 'react';
 import dayjs from 'dayjs';
 import {connect} from 'react-redux';
 import WeekTasks from './weekTasks';
+import Spinner from '../UI/spinner';
 import * as action from '../../store/actions/tasksActions';
 
 class TasksList extends React.Component {
@@ -10,15 +11,8 @@ class TasksList extends React.Component {
         this.props.getTasks(this.props.date.isoWeek())
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log('update?', this.props.date.isoWeek() !== nextProps.date.isoWeek())
-        return this.props.date.isoWeek() !== nextProps.date.isoWeek()
-    }
-
     componentDidUpdate(prevProps) {
-        console.log(this.props.date.isoWeek())
-
-        if (prevProps.date !== this.props.date) {
+        if (this.props.date.isoWeek() !== prevProps.date.isoWeek()) {
             this.props.getTasks(this.props.date.isoWeek())
         }
     }
@@ -36,8 +30,9 @@ class TasksList extends React.Component {
     render() {
         return (
             <React.Fragment>
+                {this.props.loading? <Spinner /> :
                 <WeekTasks currentDay={this.props.date.isoWeekday() - 1}
-                            weekTimestamps={this.weekTimestamps()}/>
+                            weekTimestamps={this.weekTimestamps()}/>}
             </React.Fragment>
         )
     }
@@ -46,6 +41,7 @@ class TasksList extends React.Component {
 const mapStateToProps = state => {
     return {
         date: state.date.date,
+        loading: state.tasks.loading
     }
 }
 
