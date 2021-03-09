@@ -5,10 +5,12 @@ import TasksList from './components/TasksList/TasksList';
 function App() {
   return (
     <React.Fragment>
-      <TasksNavigation />
-      <TasksList />
+      <header></header>
+      <main>
+        <TasksNavigation />
+        <TasksList />
+      </main>
     </React.Fragment>
-
   );
 }
 
