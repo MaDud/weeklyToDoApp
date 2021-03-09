@@ -32,7 +32,8 @@ class TasksList extends React.Component {
             <React.Fragment>
                 {this.props.loading? <Spinner /> :
                 <WeekTasks currentDay={this.props.date.isoWeekday() - 1}
-                            weekTimestamps={this.weekTimestamps()}/>}
+                            weekTimestamps={this.weekTimestamps()}
+                            tasks={this.props.tasks}/>}
             </React.Fragment>
         )
     }
@@ -41,7 +42,8 @@ class TasksList extends React.Component {
 const mapStateToProps = state => {
     return {
         date: state.date.date,
-        loading: state.tasks.loading
+        loading: state.tasks.loading,
+        tasks: state.tasks.tasks,
     }
 }
 

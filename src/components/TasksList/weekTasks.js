@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../styles/TasksList/weekTasks.scss';
-import {connect} from 'react-redux';
 
 const WEEK_SHORT = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
@@ -47,11 +46,4 @@ const weekTasks = props => {
 
 };
 
-const mapStateToProps = state => {
-    return {
-        tasks: state.tasks.tasks,
-        loading: state.tasks.loading
-    }
-}
-
-export default connect(mapStateToProps)(weekTasks)
+export default weekTasks
