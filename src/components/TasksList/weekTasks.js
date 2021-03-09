@@ -26,7 +26,7 @@ const weekTasks = props => {
     const tableBody = Object.keys(props.tasks).map( task => {
         return <tr className="tasksList__row" key={task}>
                     {tasksControl}
-                    <td className = "taskList__task">{props.tasks[task].name}</td>
+                    <td className = "taskList__task">{props.tasks[task].title}</td>
                 </tr>
     })
 

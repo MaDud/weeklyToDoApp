@@ -7,8 +7,20 @@ import * as action from '../../store/actions/tasksActions';
 class TasksList extends React.Component {
 
     componentDidMount() {
-        console.log('Mount')
-        this.props.getTasks()
+        this.props.getTasks(this.props.date.isoWeek())
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('update?', this.props.date.isoWeek() !== nextProps.date.isoWeek())
+        return this.props.date.isoWeek() !== nextProps.date.isoWeek()
+    }
+
+    componentDidUpdate(prevProps) {
+        console.log(this.props.date.isoWeek())
+
+        if (prevProps.date !== this.props.date) {
+            this.props.getTasks(this.props.date.isoWeek())
+        }
     }
 
     weekTimestamps = () => {
@@ -39,7 +51,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getTasks: () => dispatch(action.getTasks())
+        getTasks: (weekNumber) => dispatch(action.getTasks(weekNumber))
     }
 }
 
