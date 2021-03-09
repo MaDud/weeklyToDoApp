@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/MaDud/weeklyToDoApp/static/css/main.eea9da51.chunk.css",
-    "main.js": "/MaDud/weeklyToDoApp/static/js/main.ad9ae52b.chunk.js",
-    "main.js.map": "/MaDud/weeklyToDoApp/static/js/main.ad9ae52b.chunk.js.map",
-    "runtime-main.js": "/MaDud/weeklyToDoApp/static/js/runtime-main.7a8eca6d.js",
-    "runtime-main.js.map": "/MaDud/weeklyToDoApp/static/js/runtime-main.7a8eca6d.js.map",
-    "static/js/2.72437a2a.chunk.js": "/MaDud/weeklyToDoApp/static/js/2.72437a2a.chunk.js",
-    "static/js/2.72437a2a.chunk.js.map": "/MaDud/weeklyToDoApp/static/js/2.72437a2a.chunk.js.map",
-    "static/js/3.31823967.chunk.js": "/MaDud/weeklyToDoApp/static/js/3.31823967.chunk.js",
-    "static/js/3.31823967.chunk.js.map": "/MaDud/weeklyToDoApp/static/js/3.31823967.chunk.js.map",
+    "main.css": "/MaDud/weeklyToDoApp/static/css/main.359dbc77.chunk.css",
+    "main.js": "/MaDud/weeklyToDoApp/static/js/main.418ed854.chunk.js",
+    "main.js.map": "/MaDud/weeklyToDoApp/static/js/main.418ed854.chunk.js.map",
+    "runtime-main.js": "/MaDud/weeklyToDoApp/static/js/runtime-main.10c26364.js",
+    "runtime-main.js.map": "/MaDud/weeklyToDoApp/static/js/runtime-main.10c26364.js.map",
+    "static/js/2.5a7f4aad.chunk.js": "/MaDud/weeklyToDoApp/static/js/2.5a7f4aad.chunk.js",
+    "static/js/2.5a7f4aad.chunk.js.map": "/MaDud/weeklyToDoApp/static/js/2.5a7f4aad.chunk.js.map",
+    "static/js/3.db88111c.chunk.js": "/MaDud/weeklyToDoApp/static/js/3.db88111c.chunk.js",
+    "static/js/3.db88111c.chunk.js.map": "/MaDud/weeklyToDoApp/static/js/3.db88111c.chunk.js.map",
     "index.html": "/MaDud/weeklyToDoApp/index.html",
-    "static/css/main.eea9da51.chunk.css.map": "/MaDud/weeklyToDoApp/static/css/main.eea9da51.chunk.css.map",
-    "static/js/2.72437a2a.chunk.js.LICENSE.txt": "/MaDud/weeklyToDoApp/static/js/2.72437a2a.chunk.js.LICENSE.txt"
+    "static/css/main.359dbc77.chunk.css.map": "/MaDud/weeklyToDoApp/static/css/main.359dbc77.chunk.css.map",
+    "static/js/2.5a7f4aad.chunk.js.LICENSE.txt": "/MaDud/weeklyToDoApp/static/js/2.5a7f4aad.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.7a8eca6d.js",
-    "static/js/2.72437a2a.chunk.js",
-    "static/css/main.eea9da51.chunk.css",
-    "static/js/main.ad9ae52b.chunk.js"
+    "static/js/runtime-main.10c26364.js",
+    "static/js/2.5a7f4aad.chunk.js",
+    "static/css/main.359dbc77.chunk.css",
+    "static/js/main.418ed854.chunk.js"
   ]
 }
