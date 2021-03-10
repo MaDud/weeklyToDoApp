@@ -7,7 +7,7 @@ function App() {
   return (
     <React.Fragment>
       <header></header>
-      <main>
+      <main className='toDoApp'>
         <TasksNavigation />
         <TasksList />
         <AddTask />

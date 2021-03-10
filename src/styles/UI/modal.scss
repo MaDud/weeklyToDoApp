@@ -1,0 +1,12 @@
+.modal {
+    position: absolute;
+    z-index: 500;
+    background-color: white;
+    width: 72%;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px black;
+    left: 14%;
+    top: 10%;
+    box-sizing: border-box;
+    transition: all 0.3s ease-out;    
+}
