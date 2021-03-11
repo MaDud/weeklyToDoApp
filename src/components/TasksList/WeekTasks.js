@@ -4,7 +4,7 @@ import '../../styles/TasksList/weekTasks.scss';
 class WeekTasks extends React.Component {
 
     constructor(props) {
-        super(props)
+        super(props);
         this.weekShort = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     }
 

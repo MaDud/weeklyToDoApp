@@ -16,6 +16,7 @@ class TasksNavigation extends React.Component {
         if ( id === 'prevWeek') {
             this.props.changeWeek(this.props.date, actionsTypes.PREV_WEEK)
         } else if (id === 'nextWeek') {
+            console.log('hej')
             this.props.changeWeek(this.props.date, actionsTypes.NEXT_WEEK)
         } else if (id === 'prevDay') {
             this.props.changeDay(this.props.date, actionsTypes.PREV_DAY)
@@ -41,6 +42,8 @@ class TasksNavigation extends React.Component {
     }
 
     render() {
+        console.log(this.props.date)
+
         return (
             <React.Fragment>
                 <WeekNavigation 

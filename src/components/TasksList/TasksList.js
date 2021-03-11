@@ -2,7 +2,7 @@ import React from 'react';
 import dayjs from 'dayjs';
 import {connect} from 'react-redux';
 import WeekTasks from './WeekTasks';
-import Spinner from '../UI/spinner';
+import Spinner from '../UI/Spinner';
 import * as action from '../../store/actions/tasksActions';
 
 class TasksList extends React.Component {
