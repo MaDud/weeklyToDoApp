@@ -1,8 +1,10 @@
 import React from 'react';
 import '../../styles/UI/spinner.scss';
 
-const spinner = () => {
-    return <div className="loader"></div>
+class Spinner extends React.Component {
+    render() {
+        return <div className="loader"></div>
+    }
 }
 
-export default spinner
+export default Spinner
