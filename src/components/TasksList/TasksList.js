@@ -7,6 +7,10 @@ import * as action from '../../store/actions/tasksActions';
 
 class TasksList extends React.Component {
 
+    constructor(props) {
+        super(props)
+    }
+
     componentDidMount() {
         this.props.getTasks(this.props.date.isoWeek())
     }
