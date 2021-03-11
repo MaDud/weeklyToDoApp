@@ -5,13 +5,26 @@ import AddTaskForm from './addTaskForm';
 
 class AddTask extends React.Component {
 
+    state= {
+        show: false
+    }
+
+    changeAddFormVisibility = () => {
+        this.setState({show: !this.state.show})
+    }
+
     render() {
+        console.log(this.state.show)
         return(
             <React.Fragment>
-                <Modal>
-                    <AddTask/>
+                <Modal show={this.state.show}
+                        clicked={this.changeAddFormVisibility}>
+                    <Button clicked={this.changeAddFormVisibility}>x</Button>
+                    <AddTaskForm/>
                 </Modal>
-                <Button text='Add task' btnStyle={['button--main']}/>
+                <Button clicked={this.changeAddFormVisibility}>
+                    Add task
+                </Button>
             </React.Fragment>
         ) 
     }

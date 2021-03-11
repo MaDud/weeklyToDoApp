@@ -2,11 +2,17 @@
     position: absolute;
     z-index: 500;
     background-color: white;
-    width: 72%;
+    width: 60%;
+    min-height: 70vh;
     border: 1px solid #ccc;
     box-shadow: 1px 1px 1px black;
-    left: 14%;
+    left: 20%;
     top: 10%;
     box-sizing: border-box;
-    transition: all 0.3s ease-out;    
+    transition: all 0.3s ease-out;   
+    
+    &--invisible {
+        opacity: 0;
+        top: -100vh
+    }
 }

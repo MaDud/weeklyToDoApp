@@ -5,8 +5,8 @@ import '../../styles/UI/modal.scss';
 const modal = props => {
     return(
         <React.Fragment>
-            <Backdrop show={props.show} />
-            <article className='modal'>
+            <Backdrop {...props}/>
+            <article className={['modal', !props.show? 'modal--invisible': null].join(' ')}>
                 {props.children}
             </article>
         </React.Fragment>

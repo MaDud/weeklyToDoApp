@@ -4,11 +4,14 @@ import Button from '../UI/button';
 const addTaskForm = props => {
     return (
         <form className='addTaskForm'>
-            <label for='task'>Task</label>
+            <label htmlFor='task'>Task</label>
             <input type='text' id='task' onChange={props.inputChange}/>
-            <label for='description'>Task description</label>
+            <label htmlFor='description'>Task description</label>
             <input type='textarea' id='description' onChange={props.inputChange}/>
-            <Button type='submit' clicked={props.clicked}/>
+            <datalist>
+                
+            </datalist>
+            <Button type='submit' clicked={props.clicked} text='Add task'/>
         </form>
     )
 };
