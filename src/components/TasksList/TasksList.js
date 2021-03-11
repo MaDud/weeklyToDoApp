@@ -1,11 +1,15 @@
 import React from 'react';
 import dayjs from 'dayjs';
 import {connect} from 'react-redux';
-import WeekTasks from './weekTasks';
-import Spinner from '../UI/spinner';
+import WeekTasks from './WeekTasks';
+import Spinner from '../UI/Spinner';
 import * as action from '../../store/actions/tasksActions';
 
 class TasksList extends React.Component {
+
+    constructor(props) {
+        super(props)
+    }
 
     componentDidMount() {
         this.props.getTasks(this.props.date.isoWeek())
