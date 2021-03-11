@@ -9,14 +9,15 @@ class TasksNavigation extends React.Component {
 
     constructor(props) {
         super(props);
-        this.weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+        this.weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        this.changeView = this.changeView.bind(this)
     }
 
-    changeView (id) {
+    changeView (e) {
+        const id = e.target.id;
         if ( id === 'prevWeek') {
             this.props.changeWeek(this.props.date, actionsTypes.PREV_WEEK)
         } else if (id === 'nextWeek') {
-            console.log('hej')
             this.props.changeWeek(this.props.date, actionsTypes.NEXT_WEEK)
         } else if (id === 'prevDay') {
             this.props.changeDay(this.props.date, actionsTypes.PREV_DAY)
