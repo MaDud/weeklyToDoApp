@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../UI/button';
+import Button from '../UI/Button';
 import Modal from '../UI/modal';
 import AddTaskForm from './addTaskForm';
 
@@ -22,7 +22,7 @@ class AddTask extends React.Component {
                     <Button clicked={this.changeAddFormVisibility}>x</Button>
                     <AddTaskForm/>
                 </Modal>
-                <Button clicked={this.changeAddFormVisibility}>
+                <Button clicked={this.changeAddFormVisibility} btnStyle='button--main'>
                     Add task
                 </Button>
             </React.Fragment>

@@ -43,7 +43,6 @@ class TasksNavigation extends React.Component {
     }
 
     render() {
-        console.log(this.props.date)
 
         return (
             <React.Fragment>

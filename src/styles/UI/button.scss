@@ -7,8 +7,27 @@
     box-sizing: border-box;
     border:none;
     border-radius: 0.5rem;
-    font-size: 1.5rem; 
-    color: $bgColor;
-    background-color: $colorTitle;
     margin: auto;
+
+    &--main {
+        font-size: 1.5rem; 
+        color: $bgColor;
+        background-color: $colorTitle; 
+    }
+
+    &--transparent {
+        padding: 0;
+        background-color: transparent;
+        outline: none;
+    }
+
+    &--invisible {
+        display: none;
+    }
+
+    @include mq(smartphone) {
+        &--invisible {
+            display: block;
+        }
+    }
 }
