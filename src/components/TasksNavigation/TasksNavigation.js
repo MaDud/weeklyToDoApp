@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import {connect} from 'react-redux';
 import * as action from '../../store/actions/dateActions';
 import * as actionsTypes from '../../store/actions/actionsTypes';
-import WeekNavigation from './weekNavigation';
+import WeekNavigation from './WeekNavigation';
 
 const WEEK_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
