@@ -1,7 +1,7 @@
 import React from 'react';
-import '../../styles/weekNavigation/weekNavigation.scss';
+import '../../styles/TasksNavigation/weekNavigation.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import NavigationData from './navigationData/navigationData';
+import NavigationData from './navigationData';
 
 const weekNavigation = (props) => {
     return (
