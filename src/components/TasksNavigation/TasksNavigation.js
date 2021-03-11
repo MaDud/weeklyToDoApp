@@ -3,57 +3,64 @@ import dayjs from 'dayjs';
 import {connect} from 'react-redux';
 import * as action from '../../store/actions/dateActions';
 import * as actionsTypes from '../../store/actions/actionsTypes';
-import WeekNavigation from './weekNavigation';
+import WeekNavigation from './WeekNavigation';
 
-const WEEK_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+class TasksNavigation extends React.Component {
 
-const TasksNavigation = (props) => {
+    constructor(props) {
+        super(props);
+        this.weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        this.changeView = this.changeView.bind(this)
+    }
 
-    const changeView = id => {
-
+    changeView (e) {
+        const id = e.target.id;
         if ( id === 'prevWeek') {
-            props.changeWeek(props.date, actionsTypes.PREV_WEEK)
+            this.props.changeWeek(this.props.date, actionsTypes.PREV_WEEK)
         } else if (id === 'nextWeek') {
-            props.changeWeek(props.date, actionsTypes.NEXT_WEEK)
+            this.props.changeWeek(this.props.date, actionsTypes.NEXT_WEEK)
         } else if (id === 'prevDay') {
-            props.changeDay(props.date, actionsTypes.PREV_DAY)
+            this.props.changeDay(this.props.date, actionsTypes.PREV_DAY)
         } else {
-            props.changeDay(props.date, actionsTypes.NEXT_DAY)
+            this.props.changeDay(this.props.date, actionsTypes.NEXT_DAY)
         }
     }
 
-    const dayOfWeek = () => {
-        const dayNumber = props.date.isoWeekday();
-        return WEEK_DAYS[dayNumber - 1]
+    dayOfWeek () {
+        const dayNumber = this.props.date.isoWeekday();
+        return this.weekDays[dayNumber - 1]
     }
 
-    const weekPeriod = () => {
-        let weekStart = dayjs(props.date).startOf('isoWeek').format('DD.MM.YYYY');
-        let weekEnd = dayjs(props.date).endOf('isoWeek').format('DD.MM.YYYY');
+    weekPeriod () {
+        let weekStart = dayjs(this.props.date).startOf('isoWeek').format('DD.MM.YYYY');
+        let weekEnd = dayjs(this.props.date).endOf('isoWeek').format('DD.MM.YYYY');
 
         return `${weekStart} - ${weekEnd}`
     }
 
-    const weekNumber = () => {
-            return `${dayjs(props.date).isoWeek()}`
+    weekNumber () {
+            return `${dayjs(this.props.date).isoWeek()}`
     }
 
-    return (
-        <React.Fragment>
-            <WeekNavigation 
-                changeView = {changeView}
-                dayOfWeek = {dayOfWeek()}
-                weekPeriod = {weekPeriod()}
-                weekNumber = {weekNumber()}
-            />
-        </React.Fragment>
-    )
+    render() {
+        console.log(this.props.date)
 
+        return (
+            <React.Fragment>
+                <WeekNavigation 
+                    changeView = {this.changeView}
+                    dayOfWeek = {this.dayOfWeek()}
+                    weekPeriod = {this.weekPeriod()}
+                    weekNumber = {this.weekNumber()}
+                />
+            </React.Fragment>
+        )
+    }
 }
 
 const mapStateToProps = state => {
     return {
-        date: state.date
+        date: state.date.date
     }
 }
 
