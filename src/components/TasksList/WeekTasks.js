@@ -5,12 +5,12 @@ class WeekTasks extends React.Component {
 
     constructor(props) {
         super(props)
-        this.week_short = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+        this.weekShort = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     }
 
     tableHeads(currentDay) {
 
-        return this.week_short.map( (day,index) => {
+        return this.weekShort.map( (day,index) => {
             return <th key={index} 
                         className={["tasksList__title",
                             "tasksList__day",
