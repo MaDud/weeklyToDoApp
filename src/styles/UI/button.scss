@@ -8,11 +8,16 @@
     border:none;
     border-radius: 0.5rem;
     margin: auto;
+    font-size: 1.5rem;
 
-    &--main {
-        font-size: 1.5rem; 
+    &--dark {
         color: $bgColor;
         background-color: $colorTitle; 
+    }
+
+    &--fair {
+        color: $colorTitle;
+        background-color: $bgColor; 
     }
 
     &--transparent {
@@ -21,12 +26,12 @@
         outline: none;
     }
 
-    &--invisible {
+    &--invisibleOnDesktop {
         display: none;
     }
 
     @include mq(smartphone) {
-        &--invisible {
+        &--invisibleOnDesktop {
             display: block;
         }
     }

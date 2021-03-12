@@ -25,7 +25,7 @@ class WeekNavigation extends React.Component {
                 </Button>
                 <Button clicked={this.props.changeView} 
                         id='prevDay'
-                        btnStyle='button--transparent button--invisible'>
+                        btnStyle='button--transparent button--invisibleOnDesktop'>
                     <FontAwesomeIcon 
                         icon='angle-left' 
                         className='weekNav__arrow' />
@@ -36,7 +36,7 @@ class WeekNavigation extends React.Component {
                     weekPeriod = {weekPeriod}/>
                 <Button clicked={this.props.changeView} 
                         id='nextDay'
-                        btnStyle='button--transparent button--invisible'>
+                        btnStyle='button--transparent button--invisibleOnDesktop'>
                     <FontAwesomeIcon 
                         icon='angle-right' 
                         className='weekNav__arrow' />

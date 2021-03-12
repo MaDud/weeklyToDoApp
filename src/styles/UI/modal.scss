@@ -1,3 +1,5 @@
+@import '../global_styles/__mq';
+
 .modal {
     position: absolute;
     z-index: 500;
@@ -9,10 +11,18 @@
     left: 20%;
     top: 10%;
     box-sizing: border-box;
-    transition: all 0.3s ease-out;   
+    transition: all 0.3s ease-out;  
+    transform: translateY(0); 
     
     &--invisible {
         opacity: 0;
-        top: -100vh
+        transform: translateY(-100vh); 
+    };
+
+    @include mq(smartphone) {
+        width: 90%;
+        left: 5%;
+        height: 90vh;
+        top: 5%
     }
 }
