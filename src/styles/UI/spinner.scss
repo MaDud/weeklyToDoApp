@@ -1,4 +1,5 @@
 @import '../global_styles/__general';
+@import '../global_styles/__mq';
 
 .loader {
   margin: 0 auto;
@@ -14,6 +15,7 @@
   top:calc(50% - 10vmin);
   width:20vmin;
   z-index:1;
+
   &:before {
     animation:spin 2s infinite linear;
     border:solid 2vmin transparent;
@@ -28,6 +30,7 @@
     top:0;
     width:16vmin;
   }
+
   &:after {
     animation:spin 3s infinite linear;
     border:solid 2vmin transparent;
@@ -42,10 +45,31 @@
     top:2vmin;
     width:12vmin;
   }
-  }
-  
-  @keyframes spin {
-    100% {
-      transform:rotate(360deg);
+  @include mq(smartphone) {
+    width: 42vmin;
+    height: 42vmin;
+    border-width: 4vmin;
+    top: calc(50% - 20vmin);
+    left: calc(50% - 20vmin);
+
+    &:before {
+      width: 35vmin;
+      height: 35vmin;
+      border-width: 4vmin
+    }
+
+    &:after{
+      width: 27vmin;
+      height: 27vmin;
+      top: 4vmin;
+      left: 4vmin;
+      border-width: 4vmin;
     }
   }
+}
+  
+@keyframes spin {
+  100% {
+    transform:rotate(360deg);
+  }
+}

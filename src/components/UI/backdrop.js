@@ -1,10 +1,17 @@
 import React from 'react';
 import '../../styles/UI/backdrop.scss';
 
-const backdrop = props => {
-    return (
-        props.show ? (<div className='backdrop' onClick={props.clicked}></div>) :null
-    )
+class Backdrop extends React.Component {
+
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+        return (
+            this.props.show ? (<div className='backdrop' onClick={this.props.clicked}></div>) :null
+        )
+    }
 }
 
-export default backdrop
+export default Backdrop
