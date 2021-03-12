@@ -3,6 +3,8 @@ import Button from '../UI/Button';
 import Modal from '../UI/modal';
 import AddTaskForm from './AddTaskFrom';
 import '../../styles/AddTask/addTask.scss';
+import {connect} from 'react-redux';
+import * as action from '../../store/actions/tasksActions';
 
 class AddTask extends React.Component {
 
@@ -16,7 +18,8 @@ class AddTask extends React.Component {
             }
         };
         this.changeAddFormVisibility = this.changeAddFormVisibility.bind(this);
-        this.inputChange = this.inputChange.bind(this)
+        this.inputChange = this.inputChange.bind(this);
+        this.addTaskProcess = this.addTaskProcess.bind(this)
     }
 
     changeAddFormVisibility () {
@@ -33,8 +36,17 @@ class AddTask extends React.Component {
         this.setState({newTask: newTask})       
     }
 
+    addTaskProcess = e => {
+        e.preventDefault();
+        const data = {
+            week: this.props.date.isoWeek(),
+            ...this.state.newTask
+        };
+
+        this.props.addTask(data)
+    }
+
     render() {
-        console.log(this.state.newTask)
         return(
             <React.Fragment>
                 <Modal show={this.state.show}
@@ -42,7 +54,8 @@ class AddTask extends React.Component {
                     <Button clicked={this.changeAddFormVisibility} btnStyle='button--transparent'>x</Button>
                     <AddTaskForm title={this.state.newTask.title} 
                             description={this.state.newTask.description}
-                            inputChange={this.inputChange}/>
+                            inputChange={this.inputChange}
+                            clicked={this.addTaskProcess}/>
                 </Modal>
                 <Button clicked={this.changeAddFormVisibility} btnStyle='button--dark'>
                     Add task
@@ -52,4 +65,16 @@ class AddTask extends React.Component {
     }
 };
 
-export default AddTask
+const mapStateToProps = state => {
+    return {
+        date: state.date.date
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addTask: date => dispatch(action.addTask(date))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddTask)
