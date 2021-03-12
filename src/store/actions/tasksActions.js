@@ -54,3 +54,9 @@ export const addTask = data => {
         data: data
     }
 } 
+
+export const clearAddTask= () => {
+    return {
+        type: actionsTypes.CLEAR_ADD_TASK
+    }
+}

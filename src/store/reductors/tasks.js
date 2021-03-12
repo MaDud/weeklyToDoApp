@@ -3,7 +3,8 @@ import * as actionsTypes from '../actions/actionsTypes';
 const initialState = {
     tasks: {},
     loading: true,
-    error: null
+    error: false,
+    message: ''
 }
 
 const TasksReducer = (state = initialState, action) => {
@@ -14,7 +15,8 @@ const TasksReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: true,
-                error: null
+                error: false,
+                message: ''
             };
         case actionsTypes.GET_TASKS_LIST_SUCCESS:
             return {
@@ -27,7 +29,8 @@ const TasksReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                error: action.error
+                error: true,
+                message: action.error
             }
         case actionsTypes.ADD_TASK_SUCCESS: 
             return {
@@ -35,6 +38,14 @@ const TasksReducer = (state = initialState, action) => {
                 tasks: {...state.tasks,
                         [action.id]: action.data},
                 loading: false,
+                message: 'Task was added to list'
+            }
+        case actionsTypes.CLEAR_ADD_TASK:
+            return {
+                ...state,
+                loading: false,
+                error: false,
+                message: ''
             }
         default:
             return state

@@ -2,15 +2,22 @@ import React from 'react';
 import Backdrop from './backdrop';
 import '../../styles/UI/modal.scss';
 
-const modal = props => {
-    return(
-        <React.Fragment>
-            <Backdrop {...props}/>
-            <article className={['modal', !props.show? 'modal--invisible': null].join(' ')}>
-                {props.children}
-            </article>
-        </React.Fragment>
-    )
+class Modal extends React.Component {
+
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+        return(
+            <React.Fragment>
+                <Backdrop {...this.props}/>
+                <article className={['modal', !this.props.show? 'modal--invisible': null].join(' ')}>
+                    {this.props.children}
+                </article>
+            </React.Fragment>
+        )
+    }
 };
 
-export default modal
+export default Modal

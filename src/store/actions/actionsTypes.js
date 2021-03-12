@@ -15,4 +15,4 @@ export const INIT_ADD_TASK = 'INIT_ADD_TASK';
 export const ADD_TASK_SUCCESS = 'ADD_TASK_SUCCESS';
 export const ADD_TASK_ERROR = 'ADD_TASK_ERROR';
 export const ADD_TASK_PROCESS = 'ADD_TASK_PROCESS';
-
+export const CLEAR_ADD_TASK = 'CLEAR_ADD_TASK';
