@@ -22,7 +22,7 @@ const TasksReducer = (state = initialState, action) => {
             return {
                 ...state,
                 tasks: action.tasks,
-                loading: true
+                loading: false
             };
         case actionsTypes.GET_TASKS_LIST_ERROR:
         case actionsTypes.ADD_TASK_ERROR:

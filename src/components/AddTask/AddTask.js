@@ -15,8 +15,8 @@ class AddTask extends React.Component {
             show: false,
             newTask: {
                 title: '',
-                description: ''
-            }
+                description: '',
+            },
         };
         this.changeAddFormVisibility = this.changeAddFormVisibility.bind(this);
         this.inputChange = this.inputChange.bind(this);
@@ -75,7 +75,8 @@ class AddTask extends React.Component {
         let taskFrom = <AddTaskForm title={this.state.newTask.title} 
             description={this.state.newTask.description}
             inputChange={this.inputChange}
-            clicked={this.addTaskProcess}/>
+            clicked={this.addTaskProcess}
+            disabled={this.state.newTask.title !== '' ? false : true}/>
         
         if (this.props.loading) {
             taskFrom = <Spinner />

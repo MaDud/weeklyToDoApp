@@ -30,6 +30,12 @@
         display: none;
     }
 
+    &--disabled {
+        background-color: $bgColor;
+        color: $extraColor;
+        cursor: not-allowed
+    }
+
     @include mq(smartphone) {
         &--invisibleOnDesktop {
             display: block;
