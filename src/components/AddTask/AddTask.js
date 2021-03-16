@@ -16,6 +16,7 @@ class AddTask extends React.Component {
             newTask: {
                 title: '',
                 description: '',
+                status: {}
             },
         };
         this.changeAddFormVisibility = this.changeAddFormVisibility.bind(this);

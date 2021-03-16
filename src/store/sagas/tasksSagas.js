@@ -1,5 +1,5 @@
 import { actionTypes } from 'react-redux-firebase';
-import { put, call } from 'redux-saga/effects';
+import { put} from 'redux-saga/effects';
 import firebase from '../../fbConfig';
 import * as action from '../actions/tasksActions';
 
@@ -16,11 +16,12 @@ export function* getTasksSaga (data) {
             snapshot.forEach(task => {
                 tasks = {
                     ...tasks,
-                    [task.id]: task.data()
+                    [task.id]: {
+                        title: task.data().title,
+                        status: task.data().status
                 }
-            }); 
+            }}); 
         }
-        console.log(tasks)
 
         yield put(action.getTasksListSuccess(tasks))
     } catch (error) {

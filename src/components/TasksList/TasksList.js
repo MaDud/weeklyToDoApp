@@ -25,7 +25,7 @@ class TasksList extends React.Component {
         const week = [];
         
         for (let i=0; i<7; i++) {
-            const dayTimestamp = dayjs(this.props.date).isoWeekday(i).unix();
+            const dayTimestamp = dayjs(this.props.date.format('YYYY-MM-DD')).isoWeekday(i).unix();
             week.push(dayTimestamp)
         }
         return week

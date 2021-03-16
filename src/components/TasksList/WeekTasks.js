@@ -1,6 +1,7 @@
 import React from 'react';
 import TaskStatus from '../TaskStatus/TaskStatus';
 import '../../styles/TasksList/weekTasks.scss';
+import dayjs from 'dayjs'
 
 class WeekTasks extends React.Component {
 
@@ -21,14 +22,15 @@ class WeekTasks extends React.Component {
         })
     }
 
-    tasksControl (weekTimestamps, currentDay) {
+    tasksControl (weekTimestamps, currentDay, status) {
 
         return weekTimestamps.map( (day, index) => {
             return <td id={day}
+                    key={day}
                     onClick={this.props.clicked}
                     className={["tasksList__day",
                                 index !== currentDay ? "tasksList__title--invisible" :null].join(' ')}>
-                        <TaskStatus status={this.props.status} />
+                        <TaskStatus status={status[day] ? status[day] : null} />
                     </td>
         });
     }
@@ -37,7 +39,7 @@ class WeekTasks extends React.Component {
 
         return  Object.keys(tasks).map( task => {
             return <tr className="tasksList__row" key={task}>
-                        {this.tasksControl(weekTimestamps,currentDay)}
+                        {this.tasksControl(weekTimestamps,currentDay, tasks[task].status)}
                         <td className = "taskList__task">{tasks[task].title}</td>
                     </tr>
         })
