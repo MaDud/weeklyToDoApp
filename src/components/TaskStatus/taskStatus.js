@@ -1,4 +1,5 @@
 import React from 'react';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 class TaskStatus extends React.Component {
 
@@ -9,20 +10,20 @@ class TaskStatus extends React.Component {
 
     statusIcon (status) {
         switch (status) {
-            case STATUS.NONE: 
+            case 0: 
                 return '';
-            case STATUS.PLANNED:
-                return '';
-            case STATUS.IN_PROGRESS:
-                return '';
-            case STATUS.DONE:
-                return '';
-            case STATUS.MOVED_TO_NEXT_DAY:
-                return '';
-            case STATUS.MOVED_TO_NEXT_WEEK:
-                return '';
-            case STATUS.CANCELED:
-                return ''
+            case 1:
+                return <FontAwesomeIcon icon="circle" className='icon'/>;
+            case 2:
+                return <FontAwesomeIcon icon="ellipsis-h" className='icon'/>;
+            case 3:
+                return <FontAwesomeIcon icon="star" className='icon'/>;
+            case 4:
+                return <FontAwesomeIcon icon="angle-right" className='icon'/>;
+            case 5:
+                return <FontAwesomeIcon icon="angle-double-right" className='icon'/>;
+            case 6:
+                return <FontAwesomeIcon icon="times" className='icon'/>
             default:
                 return ''
         }

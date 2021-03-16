@@ -1,4 +1,5 @@
 import React from 'react';
+import TaskStatus from '../TaskStatus/TaskStatus';
 import '../../styles/TasksList/weekTasks.scss';
 
 class WeekTasks extends React.Component {
@@ -11,7 +12,7 @@ class WeekTasks extends React.Component {
     tableHeads(currentDay) {
 
         return this.weekShort.map( (day,index) => {
-            return <th key={index} 
+            return <th key={index} id={this.props.weekTimestamps[index]}
                         className={["tasksList__title",
                             "tasksList__day",
                             index !== currentDay ? "tasksList__title--invisible" :null].join(' ')}>
@@ -23,10 +24,11 @@ class WeekTasks extends React.Component {
     tasksControl (weekTimestamps, currentDay) {
 
         return weekTimestamps.map( (day, index) => {
-            return <td key={index}
+            return <td id={day}
+                    onClick={this.props.clicked}
                     className={["tasksList__day",
                                 index !== currentDay ? "tasksList__title--invisible" :null].join(' ')}>
-                        <input type="checkbox" id={day} />
+                        <TaskStatus status={this.props.status} />
                     </td>
         });
     }

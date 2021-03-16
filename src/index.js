@@ -26,7 +26,15 @@ import {createFirestoreInstance, firestoreReducer } from 'redux-firestore';
 
 //fontAwesome
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faAngleDoubleRight, faAngleDoubleLeft, faAngleLeft, faAngleRight} from '@fortawesome/free-solid-svg-icons';
+import {faAngleDoubleRight, 
+  faAngleDoubleLeft, 
+  faAngleLeft, 
+  faAngleRight,
+  faCircle,
+  faEllipsisH,
+  faStar,
+  faTimes} 
+from '@fortawesome/free-solid-svg-icons';
 
 dayjs.extend(isoWeek);
 dayjs.extend(isoWeeksInYear);
@@ -52,7 +60,14 @@ const rrfProps = {
 }
 sagaMiddleware.run(tasksWatcher)
 
-library.add(faAngleDoubleRight, faAngleDoubleLeft, faAngleLeft, faAngleRight)
+library.add(faAngleDoubleRight, 
+  faAngleDoubleLeft, 
+  faAngleLeft, 
+  faAngleRight, 
+  faCircle, 
+  faEllipsisH, 
+  faStar,
+  faTimes)
 
 ReactDOM.render(
   <React.StrictMode>
