@@ -60,3 +60,20 @@ export const clearAddTask= () => {
         type: actionsTypes.CLEAR_ADD_TASK
     }
 }
+
+export const changeTaskStatus = (dayId, taskId, currentStatus) => {
+
+    let newStatus = currentStatus + 1;
+    if (currentStatus === 6) {
+        newStatus = 0
+    } else if (!currentStatus) {
+        newStatus = 1
+    }
+
+    return {
+        type: actionsTypes.CHANGE_TASK_STATUS,
+        task: taskId,
+        id: dayId,
+        status: newStatus
+    }
+}

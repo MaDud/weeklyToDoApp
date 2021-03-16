@@ -1,5 +1,6 @@
 import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import '../../styles/TaskStatus/taskStatus.scss';
 
 class TaskStatus extends React.Component {
 
@@ -11,7 +12,7 @@ class TaskStatus extends React.Component {
     statusIcon (status) {
         switch (status) {
             case 0: 
-                return '';
+                return <span className='icon'></span>;
             case 1:
                 return <FontAwesomeIcon icon="circle" className='icon'/>;
             case 2:

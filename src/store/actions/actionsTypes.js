@@ -16,3 +16,6 @@ export const ADD_TASK_SUCCESS = 'ADD_TASK_SUCCESS';
 export const ADD_TASK_ERROR = 'ADD_TASK_ERROR';
 export const ADD_TASK_PROCESS = 'ADD_TASK_PROCESS';
 export const CLEAR_ADD_TASK = 'CLEAR_ADD_TASK';
+
+//change status of task
+export const CHANGE_TASK_STATUS = 'CHANGE_TASK_STATUS'

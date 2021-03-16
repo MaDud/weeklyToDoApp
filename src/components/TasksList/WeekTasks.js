@@ -30,7 +30,7 @@ class WeekTasks extends React.Component {
                     onClick={this.props.clicked}
                     className={["tasksList__day",
                                 index !== currentDay ? "tasksList__title--invisible" :null].join(' ')}>
-                        <TaskStatus status={status[day] ? status[day] : null} />
+                        <TaskStatus status={status[day] ? status[day] : 0} />
                     </td>
         });
     }
@@ -38,7 +38,7 @@ class WeekTasks extends React.Component {
     tableBody(tasks, weekTimestamps, currentDay) {
 
         return  Object.keys(tasks).map( task => {
-            return <tr className="tasksList__row" key={task}>
+            return <tr className="tasksList__row" key={task} id={task}>
                         {this.tasksControl(weekTimestamps,currentDay, tasks[task].status)}
                         <td className = "taskList__task">{tasks[task].title}</td>
                     </tr>

@@ -31,13 +31,22 @@ class TasksList extends React.Component {
         return week
     }
 
+    changeStatus = e => {
+        const day = e.target.id;
+        const task = e.target.parentElement.id;
+        const currentStatus = this.props.tasks[task].status[day]
+        console.log(currentStatus)
+        this.props.changeTaskStatus(day, task, currentStatus)
+    }
+
     render() {
         return (
             <React.Fragment>
                 {this.props.loading? <Spinner /> :
                 <WeekTasks currentDay={this.props.date.isoWeekday() - 1}
                             weekTimestamps={this.weekTimestamps()}
-                            tasks={this.props.tasks}/>}
+                            tasks={this.props.tasks}
+                            clicked={this.changeStatus.bind(this)}/>}
             </React.Fragment>
         )
     }
@@ -53,7 +62,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getTasks: (weekNumber) => dispatch(action.getTasks(weekNumber))
+        getTasks: (weekNumber) => dispatch(action.getTasks(weekNumber)),
+        changeTaskStatus: (dayId, taskId, currentStatus) => dispatch(action.changeTaskStatus(dayId, taskId, currentStatus))
     }
 }
 
