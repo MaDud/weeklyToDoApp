@@ -8,7 +8,8 @@ import * as action from '../../store/actions/tasksActions';
 class TasksList extends React.Component {
 
     constructor(props) {
-        super(props)
+        super(props);
+        this.timer = null
     }
 
     componentDidMount() {
@@ -21,7 +22,7 @@ class TasksList extends React.Component {
         }
     }
 
-    weekTimestamps = () => {
+    weekTimestamps () {
         const week = [];
         
         for (let i=0; i<7; i++) {
@@ -31,11 +32,17 @@ class TasksList extends React.Component {
         return week
     }
 
-    changeStatus = e => {
+    changeStatus (e) {
         const day = e.target.id;
         const task = e.target.parentElement.id;
         const currentStatus = this.props.tasks[task].status[day];
-        this.props.changeTaskStatus(day, task, currentStatus)
+        this.props.changeTaskStatus(day, task, currentStatus);
+        this.statusCheck(task);
+    }
+
+    statusCheck (id) {
+        clearTimeout(this.timer);
+        this.timer = setTimeout(() => this.props.updateStatus(id), 500)
     }
 
     render() {
@@ -62,7 +69,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         getTasks: (weekNumber) => dispatch(action.getTasks(weekNumber)),
-        changeTaskStatus: (dayId, taskId, currentStatus) => dispatch(action.changeTaskStatus(dayId, taskId, currentStatus))
+        changeTaskStatus: (dayId, taskId, currentStatus) => dispatch(action.changeTaskStatus(dayId, taskId, currentStatus)),
+        updateStatus: (id) => dispatch(action.updateStatusProcess(id))
     }
 }
 

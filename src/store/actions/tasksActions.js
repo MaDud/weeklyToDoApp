@@ -78,13 +78,27 @@ export const changeTaskStatus = (dayId, taskId, currentStatus) => {
     }
 }
 
-export const initTaskStatusUpdate = () => actionsTypes.INIT_UPDATE_TASK_STATUS;
-export const updateTaskStatus = () => actionsTypes.UPDATE_TASK_SUCCESS;
-export const updateTaskFail = () => actionsTypes.UPDATE_TASK_FAIL;
-export const updateStatusProcess = (taskId, data) => {
+export const initTaskStatusUpdate = () => {
+    return {
+        type:actionsTypes.INIT_UPDATE_TASK_STATUS
+    }
+};
+
+export const updateTaskStatus = () => {
+    return {
+        type:actionsTypes.UPDATE_TASK_SUCCESS
+    }
+};
+
+export const updateTaskFail = () => {
+    return {
+        type:actionsTypes.UPDATE_TASK_FAIL
+    }
+};
+
+export const updateStatusProcess = (id) => {
     return {
         type: actionsTypes.UPDATE_TASK_PROCESS,
-        id: taskId,
-        data: data
+        id: id,
     }
 }
