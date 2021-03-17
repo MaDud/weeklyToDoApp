@@ -1,4 +1,3 @@
-import { actionTypes } from 'react-redux-firebase';
 import { put} from 'redux-saga/effects';
 import firebase from '../../fbConfig';
 import * as action from '../actions/tasksActions';
@@ -40,5 +39,15 @@ export function* addTaskSaga (data) {
         yield put(action.addTaskSuccess(task))
     } catch (error) {
         yield put(action.addTaskError('Ups... Something went wrong'))
+    }
+}
+
+export function* updateTaskStatus (data) {
+    yield put(action.initTaskStatusUpdate());
+    try {
+        yield db.collection('tasks').doc(data.id).update(data.data);
+        yield put(action.updateTaskStatus())
+    } catch (error) {
+        yield put(action.updateTaskFail())
     }
 }

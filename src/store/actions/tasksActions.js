@@ -77,3 +77,14 @@ export const changeTaskStatus = (dayId, taskId, currentStatus) => {
         status: newStatus
     }
 }
+
+export const initTaskStatusUpdate = () => actionsTypes.INIT_UPDATE_TASK_STATUS;
+export const updateTaskStatus = () => actionsTypes.UPDATE_TASK_SUCCESS;
+export const updateTaskFail = () => actionsTypes.UPDATE_TASK_FAIL;
+export const updateStatusProcess = (taskId, data) => {
+    return {
+        type: actionsTypes.UPDATE_TASK_PROCESS,
+        id: taskId,
+        data: data
+    }
+}

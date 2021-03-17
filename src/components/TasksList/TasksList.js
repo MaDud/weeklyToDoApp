@@ -34,8 +34,7 @@ class TasksList extends React.Component {
     changeStatus = e => {
         const day = e.target.id;
         const task = e.target.parentElement.id;
-        const currentStatus = this.props.tasks[task].status[day]
-        console.log(currentStatus)
+        const currentStatus = this.props.tasks[task].status[day];
         this.props.changeTaskStatus(day, task, currentStatus)
     }
 

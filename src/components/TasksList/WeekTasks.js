@@ -1,7 +1,6 @@
 import React from 'react';
 import TaskStatus from '../TaskStatus/TaskStatus';
 import '../../styles/TasksList/weekTasks.scss';
-import dayjs from 'dayjs'
 
 class WeekTasks extends React.Component {
 
