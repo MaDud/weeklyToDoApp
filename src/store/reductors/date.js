@@ -11,7 +11,9 @@ const DateReducer = (state = initialState, action) => {
         case actionsTypes.NEXT_WEEK:
         case actionsTypes.PREV_WEEK:
         case actionsTypes.NEXT_DAY:
-        case actionsTypes.PREV_DAY:     {
+        case actionsTypes.PREV_DAY: 
+        case actionsTypes.CURRENT_DATE:
+           {
             return {
                 ...state,
                 date: action.payload

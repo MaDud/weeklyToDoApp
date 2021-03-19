@@ -2,6 +2,7 @@ import React from 'react';
 import dayjs from 'dayjs';
 import {connect} from 'react-redux';
 import WeekTasks from './WeekTasks';
+import EmptyList from './EmptyList';
 import Spinner from '../UI/Spinner';
 import * as action from '../../store/actions/tasksActions';
 
@@ -34,7 +35,7 @@ class TasksList extends React.Component {
 
     changeStatus (e) {
         const day = e.target.id;
-        const task = e.target.parentElement.id;
+        const task = e.target.parentElement.parentElement.id;
         const currentStatus = this.props.tasks[task].status[day];
         this.props.changeTaskStatus(day, task, currentStatus);
         this.statusCheck(task);
@@ -53,6 +54,8 @@ class TasksList extends React.Component {
                             weekTimestamps={this.weekTimestamps()}
                             tasks={this.props.tasks}
                             clicked={this.changeStatus.bind(this)}/>}
+                {!this.props.loading && Object.keys(this.props.tasks).length === 0 ?
+                <EmptyList /> : null}
             </React.Fragment>
         )
     }

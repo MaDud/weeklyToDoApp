@@ -1,13 +1,19 @@
 import React from 'react';
+import './styles/app.scss';
 import TasksNavigation from './components/TasksNavigation/TasksNavigation';
 import TasksList from './components/TasksList/TasksList';
 import AddTask from './components/AddTask/AddTask';
+import StatusBar from './components/StatusBar/StatusBar';
+import Logo from './components/Logo/Logo';
 
 function App() {
   return (
     <React.Fragment>
-      <header></header>
-      <main className='toDoApp'>
+      <header className='header'>
+        <Logo />
+        <StatusBar />
+      </header>
+      <main className='main'>
         <TasksNavigation />
         <TasksList />
         <AddTask />

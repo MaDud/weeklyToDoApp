@@ -1,5 +1,6 @@
 import React from 'react';
-import TaskStatus from '../TaskStatus/TaskStatus';
+import TaskStatus from './TaskStatus';
+import Button from '../UI/Button';
 import '../../styles/TasksList/weekTasks.scss';
 
 class WeekTasks extends React.Component {
@@ -24,12 +25,14 @@ class WeekTasks extends React.Component {
     tasksControl (weekTimestamps, currentDay, status) {
 
         return weekTimestamps.map( (day, index) => {
-            return <td id={day}
+            return <td 
                     key={day}
-                    onClick={this.props.clicked}
+                    // onClick={this.props.clicked}
                     className={["tasksList__day",
                                 index !== currentDay ? "tasksList__title--invisible" :null].join(' ')}>
-                        <TaskStatus status={status[day] ? status[day] : 0} />
+                        <Button clicked={this.props.clicked} id={day} btnStyle="button--transparent">
+                            <TaskStatus status={status[day] ? status[day] : 0} />
+                        </Button>
                     </td>
         });
     }
@@ -39,7 +42,7 @@ class WeekTasks extends React.Component {
         return  Object.keys(tasks).map( task => {
             return <tr className="tasksList__row" key={task} id={task}>
                         {this.tasksControl(weekTimestamps,currentDay, tasks[task].status)}
-                        <td className = "taskList__task">{tasks[task].title}</td>
+                        <td className = "tasksList__task">{tasks[task].title}</td>
                     </tr>
         })
     }
@@ -52,7 +55,7 @@ class WeekTasks extends React.Component {
                 <thead className="tasksList__head">
                     <tr className="tasksList__row">
                         {this.tableHeads(currentDay)}
-                        <th className="tasksList__title">Tasks</th>
+                        <th className="tasksList__title tasksList__task">Tasks</th>
                     </tr>
                 </thead>
                 <tbody className="tasksList__body">

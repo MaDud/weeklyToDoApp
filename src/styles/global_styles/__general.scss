@@ -9,4 +9,24 @@ $basicFont: 'Montserrat', sans-serif;
 
 $basicFontSize: 1.5rem;
 $titleFontSize: 2rem;
-$dayColumnWidth: 4rem
+$dayColumnWidth: 4rem;
+
+@mixin mainTitle {
+    font-size: 2rem;
+    font-family: $titleFont;
+    color: $colorTitle;
+    @content
+};
+
+@mixin subtitle {
+    font-size: 1.3rem;
+    font-family: $titleFont;
+    color: $colorTitle;
+    @content
+};
+
+@mixin basicText {
+    font-size: 1rem;
+    font-family: $basicFont;
+    color: #000
+}

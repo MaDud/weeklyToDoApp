@@ -1,0 +1,8 @@
+@import './global_styles/__general';
+
+.logo {
+    font-family: $titleFont;
+    color: $bgColor;
+    font-size: 1.8rem;
+    margin: 0.5rem 0;
+}

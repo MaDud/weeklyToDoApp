@@ -2,6 +2,7 @@ export const NEXT_WEEK = 'NEXT_WEEK';
 export const PREV_WEEK = 'PREV_WEEK';
 export const NEXT_DAY = 'NEXT_DAY';
 export const PREV_DAY = 'PREV_DAY';
+export const CURRENT_DATE = 'CURRENT_DATE';
 
 //get tasks list from database
 export const GET_TASKS_LIST_PROCESS = 'GET_TASKS_LIST_PROCESS';

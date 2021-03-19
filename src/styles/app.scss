@@ -1,0 +1,32 @@
+@import './global_styles/__general';
+@import './global_styles/_mq';
+
+body {
+    margin: 0
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $colorTitle;
+    padding: 0 15%;
+
+    button {
+        margin: 0
+    }
+
+    @include mq(smartphone) {
+        padding: 0 0.5rem;
+    }
+}
+
+.main {
+    margin: 0 15%;
+    display: flex;
+    flex-direction: column;
+
+    @include mq(smartphone) {
+        margin: 0;
+    }
+}

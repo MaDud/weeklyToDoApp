@@ -33,7 +33,9 @@ import {faAngleDoubleRight,
   faCircle,
   faEllipsisH,
   faStar,
-  faTimes} 
+  faTimes,
+  faAdjust,
+  faCouch} 
 from '@fortawesome/free-solid-svg-icons';
 
 dayjs.extend(isoWeek);
@@ -67,7 +69,9 @@ library.add(faAngleDoubleRight,
   faCircle, 
   faEllipsisH, 
   faStar,
-  faTimes)
+  faTimes,
+  faAdjust,
+  faCouch)
 
 ReactDOM.render(
   <React.StrictMode>

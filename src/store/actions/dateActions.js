@@ -62,3 +62,10 @@ export const changeDay = (date, type) => {
     }
 }
 
+export const currentDate = () => {
+    return {
+        type: actionsTypes.CURRENT_DATE,
+        payload: dayjs()
+    }
+}
+
