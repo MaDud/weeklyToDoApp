@@ -2,6 +2,7 @@ import React from 'react';
 import TaskStatus from '../TasksList/TaskStatus';
 import Button from '../UI/Button';
 import '../../styles/legend.scss';
+import { connect } from 'react-redux';
 
 class Legend extends React.Component {
 
@@ -33,27 +34,38 @@ class Legend extends React.Component {
         if (this.state.open) {
             legendVisibility.push('legend__open')
         }
+
         return (
-            <aside className={legendVisibility.join(' ')}>
-                <Button btnStyle='button--dark'
-                    clicked={this.legendVisibility.bind(this)}>
-                        Legend
-                </Button>
-                <h2 className='legend__title' >Legend</h2>
-                <table className='legend__table'>
-                    <thead>
-                        <tr>
-                            <th className='legend__head'>Symbol</th>
-                            <th className='legend__head'>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody className='legend__data'>
-                        {this.legendData()}
-                    </tbody>
-                </table>
-            </aside>
+            <React.Fragment>
+                {Object.keys(this.props.tasks).length === 0 ? null :
+                  (<aside className={legendVisibility.join(' ')}>
+                        <Button btnStyle='button--dark'
+                            clicked={this.legendVisibility.bind(this)}>
+                                Legend
+                        </Button>
+                        <h2 className='legend__title' >Legend</h2>
+                        <table className='legend__table'>
+                            <thead>
+                                <tr>
+                                    <th className='legend__head'>Symbol</th>
+                                    <th className='legend__head'>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody className='legend__data'>
+                                {this.legendData()}
+                            </tbody>
+                        </table>
+                    </aside>)
+                }
+            </React.Fragment>
         )
     }
 };
 
-export default Legend
+const mapStateToProps = state => {
+    return {
+        tasks: state.tasks.tasks
+    }
+}
+
+export default connect(mapStateToProps)(Legend)

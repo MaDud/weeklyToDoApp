@@ -26,7 +26,8 @@
 
     &__head {
         @include subtitle {
-            font-size: 1rem;
+            font-size: $basicFontSize;
+            padding: 0.5rem 0;
         }
     }
 
@@ -46,7 +47,8 @@
         top: 0;
         flex-direction: column;
         width: 100%;
-        padding: 1rem 0 3rem 0;
+        padding: 0 0 4rem 0;
+        margin: 2rem 0;
         background-color: lighten($bgColor, 10%);
 
         button {
@@ -63,8 +65,10 @@
         &__table {
             width: 100%
         }
+
+        &__description {
+            text-align: center;
+        }
     }
-
-
 
 }
