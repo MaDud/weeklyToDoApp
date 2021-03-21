@@ -2,6 +2,7 @@ import React from 'react';
 import '../../styles/TasksNavigation/weekNavigation.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import NavigationData from './NavigationData';
+import Button from '../UI/Button';
 
 class WeekNavigation extends React.Component {
 
@@ -15,30 +16,38 @@ class WeekNavigation extends React.Component {
 
         return (
             <nav className={'weekNav'}>
-                <FontAwesomeIcon 
-                    icon='angle-double-left' 
-                    id='prevWeek'
-                    onClick={this.props.changeView}
-                    className= 'weekNav__arrow'/>
-                <FontAwesomeIcon 
-                    icon='angle-left' 
-                    id='prevDay'
-                    className={['weekNav__arrow', 'weekNav__arrow--day'].join(' ')} 
-                    onClick={this.props.changeView}/>
+                <Button clicked={this.props.changeView} 
+                        id='prevWeek' 
+                        btnStyle='button--transparent'>
+                    <FontAwesomeIcon 
+                        icon='angle-double-left'
+                        className='weekNav__arrow' />
+                </Button>
+                <Button clicked={this.props.changeView} 
+                        id='prevDay'
+                        btnStyle='button--transparent button--invisibleOnDesktop'>
+                    <FontAwesomeIcon 
+                        icon='angle-left' 
+                        className='weekNav__arrow' />
+                </Button>
                 <NavigationData 
                     weekNumber = {weekNumber}
                     dayOfWeek = {dayOfWeek}
                     weekPeriod = {weekPeriod}/>
-                <FontAwesomeIcon 
-                    icon='angle-right' 
-                    id='nextDay'
-                    className={['weekNav__arrow', 'weekNav__arrow--day'].join(' ')} 
-                    onClick={this.props.changeView}/>
-                <FontAwesomeIcon 
-                    icon='angle-double-right' 
-                    id='nextWeek'
-                    onClick={this.props.changeView}
-                    className= 'weekNav__arrow'/>
+                <Button clicked={this.props.changeView} 
+                        id='nextDay'
+                        btnStyle='button--transparent button--invisibleOnDesktop'>
+                    <FontAwesomeIcon 
+                        icon='angle-right' 
+                        className='weekNav__arrow' />
+                </Button>
+                <Button clicked={this.props.changeView} 
+                        id='nextWeek'
+                        btnStyle='button--transparent'>
+                    <FontAwesomeIcon 
+                        icon='angle-double-right' 
+                        className='weekNav__arrow' />
+                </Button>
             </nav>
         )
     }

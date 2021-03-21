@@ -1,0 +1,12 @@
+.addTask {
+    flex: 1;
+    display: flex;
+    align-items: center;
+
+    &__button {
+        align-self: flex-end;
+        margin: 1rem;
+        width: 2rem;
+    }
+
+}

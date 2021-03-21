@@ -1,0 +1,44 @@
+@import '../global_styles/__mq';
+@import '../global_styles/__general';
+
+.button {
+    font-family: $titleFont;
+    padding: 0.5rem 1rem;
+    box-sizing: border-box;
+    border:none;
+    border-radius: 0.5rem;
+    margin: auto;
+    font-size: 1.5rem;
+
+    &--dark {
+        color: $bgColor;
+        background-color: $colorTitle; 
+    }
+
+    &--fair {
+        color: $colorTitle;
+        background-color: $bgColor; 
+    }
+
+    &--transparent {
+        padding: 0;
+        background-color: transparent;
+        outline: none;
+    }
+
+    &--invisibleOnDesktop {
+        display: none;
+    }
+
+    &--disabled {
+        background-color: $bgColor;
+        color: $extraColor;
+        cursor: not-allowed
+    }
+
+    @include mq(smartphone) {
+        &--invisibleOnDesktop {
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,42 @@
+@import '../global_styles/__mq';
+@import '../global_styles/__general';
+
+.addTaskForm {
+    // flex:1;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    width: 70%;
+    margin: 1rem auto;
+
+    &__label {
+        font-family: $basicFont;
+        padding: 1rem 0;
+        font-size: 1.2rem;
+    };
+
+    &__text, &__textarea {
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        font-family: $basicFont;
+    }
+
+    &__text {
+        height: 2rem;
+    }
+
+    &__textarea {
+        height: 10rem;
+    }
+
+    @include mq(smartphone) {
+        width: 80%;
+    }
+
+}
+
+.button--dark {
+    margin: 2rem 0;
+    width: max-content;
+    align-self: center;
+}
