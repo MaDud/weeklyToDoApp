@@ -7,11 +7,14 @@
     border-collapse: collapse;
 
     &__title {
-        font-family: $titleFont !important;
-        font-size: 1.3rem;
-        color: $colorTitle;
-        padding: 0.5rem;
-        min-width: 4rem;
+        @include subtitle {
+            min-width: 4rem;
+            padding: 0.5rem;
+        }
+    }
+
+    &__title:last-child {
+        width: 100%;
     }
 
     &__day {
@@ -27,21 +30,20 @@
     }
 
     &__task {
-        font-family: $basicFont;
-        padding: 0.5rem;
-        box-sizing: border-box;
-        width: 100%;
+        @include basicText {
+            padding: 0.5rem;
+            box-sizing: border-box;
+            width: 100%;
+        }
     }
 
     button {
         width: 100%;
-        // min-height: 2rem;
         height: 100%;
         padding: 0.2rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        // display: block;
         position: absolute;
         top:0;
         left: 0

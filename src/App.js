@@ -5,6 +5,7 @@ import TasksList from './components/TasksList/TasksList';
 import AddTask from './components/AddTask/AddTask';
 import StatusBar from './components/StatusBar/StatusBar';
 import Logo from './components/Logo/Logo';
+import Legend from './components/Legend/Legend';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <TasksNavigation />
         <TasksList />
         <AddTask />
+        <Legend />
       </main>
     </React.Fragment>
   );

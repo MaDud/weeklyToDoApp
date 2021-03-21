@@ -55,7 +55,7 @@ class WeekTasks extends React.Component {
                 <thead className="tasksList__head">
                     <tr className="tasksList__row">
                         {this.tableHeads(currentDay)}
-                        <th className="tasksList__title tasksList__task">Tasks</th>
+                        <th className="tasksList__title">Tasks</th>
                     </tr>
                 </thead>
                 <tbody className="tasksList__body">

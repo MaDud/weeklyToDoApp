@@ -5,7 +5,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 3rem auto;
+    margin: 4rem auto;
     padding: 1rem;
     box-sizing: border-box;
     background-color: $bgColor;
@@ -14,7 +14,7 @@
     font-family: $titleFont;
 
     &__arrow {
-        font-size: 2.5rem;
+        font-size: $titleFontSize;
         padding: 0.5rem;
         color: $colorTitle;
         pointer-events: none;
@@ -26,7 +26,6 @@
 
         &__arrow {
             width: 1rem;
-            font-size: 1.8rem;
         }
     }
 }

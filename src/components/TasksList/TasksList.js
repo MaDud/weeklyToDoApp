@@ -10,7 +10,8 @@ class TasksList extends React.Component {
 
     constructor(props) {
         super(props);
-        this.timer = null
+        this.timer = null;
+        this.changeStatus = this.changeStatus.bind(this)
     }
 
     componentDidMount() {
@@ -47,15 +48,23 @@ class TasksList extends React.Component {
     }
 
     render() {
+
+        const listLength = Object.keys(this.props.tasks).length;
+        let content = <Spinner/>;
+
+        if (!this.props.loading && listLength>0) {
+            content = (<WeekTasks currentDay={this.props.date.isoWeekday() - 1}
+                weekTimestamps={this.weekTimestamps()}
+                tasks={this.props.tasks}
+                clicked={this.changeStatus}/>)
+        } else if (!this.props.loading && listLength === 0) {
+            content = <EmptyList /> 
+        }
+
+
         return (
             <React.Fragment>
-                {this.props.loading? <Spinner /> :
-                <WeekTasks currentDay={this.props.date.isoWeekday() - 1}
-                            weekTimestamps={this.weekTimestamps()}
-                            tasks={this.props.tasks}
-                            clicked={this.changeStatus.bind(this)}/>}
-                {!this.props.loading && Object.keys(this.props.tasks).length === 0 ?
-                <EmptyList /> : null}
+                {content}
             </React.Fragment>
         )
     }
