@@ -12,9 +12,9 @@ class Modal extends React.Component {
         return(
             <React.Fragment>
                 <Backdrop {...this.props}/>
-                <article className={['modal', !this.props.show? 'modal--invisible': null].join(' ')}>
+                <div className={['modal', !this.props.show? 'modal--invisible': null].join(' ')}>
                     {this.props.children}
-                </article>
+                </div>
             </React.Fragment>
         )
     }
