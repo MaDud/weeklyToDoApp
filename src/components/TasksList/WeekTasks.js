@@ -2,6 +2,7 @@ import React from 'react';
 import TaskStatus from './TaskStatus';
 import Button from '../UI/Button';
 import '../../styles/TasksList/weekTasks.scss';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 class WeekTasks extends React.Component {
 
@@ -14,8 +15,16 @@ class WeekTasks extends React.Component {
         };
     }
 
-    tableSorting(id) {
-        const tasksValues = Object.values(this.props.tasks);
+    setSortingOptions (id) {
+        if (this.state.sortBy === id) {
+            this.setState({asc: !this.state.asc})
+        } else {
+            this.setState({sortBy: id, asc: false})
+        }
+    }
+
+    tableSortingBy(tasks, id) {
+        const tasksValues = Object.values(tasks);
 
         if (id === 'tasks') {
             tasksValues.sort( (a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()))
@@ -42,7 +51,15 @@ class WeekTasks extends React.Component {
             }
         }
 
-        this.setState({tasksList: sortedTasks, asc: !this.state.asc, sortBy: id})
+        return sortedTasks
+    }
+
+    currentSortIcon = () => {
+        if (this.state.asc) {
+            return <FontAwesomeIcon icon='sort-down' className='button__icon--active'/>
+        } else {
+            return<FontAwesomeIcon icon='sort-up' className='button__icon--active'/> 
+        }
     }
 
     tableHeads(currentDay) {
@@ -50,10 +67,13 @@ class WeekTasks extends React.Component {
         return this.weekShort.map( (day,index) => {
             return <th key={index} id={this.props.weekTimestamps[index]}
                         className={["tasksList__title",
-                            "tasksList__day",
                             index !== currentDay ? "tasksList__title--invisible" :null].join(' ')}>
-                        {day}
-                        <Button onClick={() => this.tableSorting(this.props.weekTimestamps[index])}>c</Button>
+                        <Button btnStyle='button--transparent button__sort' clicked={() => this.setSortingOptions(this.props.weekTimestamps[index])}>
+                            {day} 
+                            <span>
+                                {this.state.sortBy === this.props.weekTimestamps[index] ? this.currentSortIcon() : <FontAwesomeIcon icon='sort' className='button__icon'/>}
+                            </span>
+                        </Button>
                     </th>
         })
     }
@@ -64,8 +84,8 @@ class WeekTasks extends React.Component {
             return <td 
                     key={day}
                     className={["tasksList__day",
-                                index !== currentDay ? "tasksList__title--invisible" :null].join(' ')}>
-                        <Button clicked={this.props.clicked} id={day} btnStyle="button--transparent">
+                                index !== currentDay ? "tasksList__day--invisible" :null].join(' ')}>
+                        <Button clicked={this.props.clicked} id={day} btnStyle="button--transparent button__statusIcon">
                             <TaskStatus status={status[day] ? status[day] : 0} />
                         </Button>
                     </td>
@@ -74,7 +94,9 @@ class WeekTasks extends React.Component {
 
     tableBody(tasks, weekTimestamps, currentDay) {
 
-        return  Object.keys(tasks).map( task => {
+        const sortedTask = this.tableSortingBy(tasks, this.state.sortBy)
+
+        return  Object.keys(sortedTask).map( task => {
             return <tr className="tasksList__row" key={task} id={task}>
                         {this.tasksControl(weekTimestamps,currentDay, tasks[task].status)}
                         <td className = "tasksList__task">{tasks[task].title}</td>
@@ -91,14 +113,18 @@ class WeekTasks extends React.Component {
                     <tr className="tasksList__row">
                         {this.tableHeads(currentDay)}
                         <th className="tasksList__title" 
-                            id="tasks"
-                            onClick={() => this.tableSorting('tasks')}>
-                            Tasks
+                            id="tasks">
+                            <Button btnStyle='button--transparent button__sort' clicked={() => this.setSortingOptions('tasks')}>
+                                Tasks 
+                                <span>
+                                    {this.state.sortBy === 'tasks'? this.currentSortIcon() : <FontAwesomeIcon icon='sort' className = 'button__icon'/>}
+                                </span>
+                            </Button>
                         </th>
                     </tr>
                 </thead>
                 <tbody className="tasksList__body">
-                    {this.tableBody(this.props.tasks, weekTimestamps, currentDay)}
+                    {this.tableBody(tasks, weekTimestamps, currentDay)}
                 </tbody>
             </table>
            

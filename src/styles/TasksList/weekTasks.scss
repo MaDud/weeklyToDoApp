@@ -8,17 +8,24 @@
 
     &__title {
         @include subtitle {
-            min-width: 4rem;
+            min-width: 5rem;
+        }
+
+        &:nth-of-type(odd) {
+            background-color: $bgColor;
+        }
+
+        button {
+            width: 100%;
+            height: 100%;
             padding: 0.5rem;
+            display: flex;
+            justify-content: center;
         }
     }
 
-    &__title:last-child {
-        width: 100%;
-    }
-
     &__day {
-        position: relative
+        position: relative;
     }
 
     &__day:nth-of-type(odd) {
@@ -37,7 +44,26 @@
         }
     }
 
-    button {
+    @include mq(smartphone) {
+        margin: 1rem 0;
+        width: 100%;
+        &__title--invisible, &__day--invisible {
+            display: none;
+        }
+
+        &__day {
+            width: 4rem;
+        }
+
+        &__day:nth-of-type(odd), &__title:nth-of-type(odd) {
+            background-color: #fff;
+        }
+    }
+}
+
+.button {
+
+    &__statusIcon {
         width: 100%;
         height: 100%;
         padding: 0.2rem;
@@ -47,22 +73,23 @@
         position: absolute;
         top:0;
         left: 0
-        
     }
 
-    @include mq(smartphone) {
-        margin: 1rem 0;
+    &__sort {
         width: 100%;
-        &__title--invisible {
-            display: none;
-        }
+        height: 100%;
+        padding: 0.5rem;
+        display: flex;
+        justify-content: center;
+    }
 
-        &__day {
-            width: 4rem;
-        }
+    &__icon {
+        padding: 0 0 0 1rem;
+        color: $extraColor;
 
-        &__day:nth-of-type(odd) {
-            background-color: #fff;
+        &--active {
+            padding: 0 0 0 1rem;
+            color: $colorTitle
         }
     }
 }
