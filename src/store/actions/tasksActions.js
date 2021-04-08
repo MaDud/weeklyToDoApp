@@ -128,3 +128,28 @@ export const moveTaskToNextWeek = (id) => {
         id: id
     }
 }
+
+export const initCancelMoveTaskToNextWeek = () => {
+    return {
+        type: actionsTypes.INIT_CANCEL_MOVE_TASK_TO_NEXT_WEEK
+    }
+}
+
+export const cancelMoveTaskToNextWeekSuccess = () => {
+    return {
+        type: actionsTypes.CANCEL_MOVE_TASK_TO_NEXT_WEEK_SUCCESS
+    }
+}
+
+export const cancelMoveTaskToNextWeekError = () => {
+    return {
+        type: actionsTypes.CANCEL_MOVE_TASK_TO_NEXT_WEEK_ERROR
+    }
+}
+
+export const cancelMoveTaskToNextWeek = (id) => {
+    return {
+        type: actionsTypes.CANCEL_MOVE_TASK_TO_NEXT_WEEK,
+        id: id
+    }
+}

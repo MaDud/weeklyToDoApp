@@ -18,7 +18,8 @@ export function* getTasksSaga (data) {
                     ...tasks,
                     [task.id]: {
                         title: task.data().title,
-                        status: task.data().status
+                        status: task.data().status,
+                        week: task.data().week
                 }
             }}); 
         }
@@ -64,13 +65,17 @@ export function* moveTaskToNextWeek (data) {
         console.log(error)
         yield put(action.moveTaskToNextWeekError())
     }
-}
+};
 
 export function* removeTaskFromNextWeek (data) {
     const week = yield select(currentWeek);
+    const task = yield select(getTasks);
+    const weeksToRemove = yield task[data.id].week.filter(weekNumber => weekNumber > week)
+    yield put(action.initCancelMoveTaskToNextWeek())
     try {
-        yield db.collection('tasks').doc(data.id).update({week: firebase.firestore.FieldValue.arrayRemove(week + 1)})
+        yield db.collection('tasks').doc(data.id).update({week: firebase.firestore.FieldValue.arrayRemove(...weeksToRemove)});
+        yield put(action.cancelMoveTaskToNextWeekSuccess())
     } catch (error) {
-        
+        yield put(action.cancelMoveTaskToNextWeekError())
     }
-}
+};
