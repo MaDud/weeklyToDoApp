@@ -106,7 +106,6 @@ class WeekTasks extends React.Component {
 
     render() {
         const {tasks, currentDay, weekTimestamps} = this.props;
-        console.log(this.state)
         return (    
             <table className="tasksList">
                 <thead className="tasksList__head">

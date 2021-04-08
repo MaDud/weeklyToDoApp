@@ -38,13 +38,21 @@ class TasksList extends React.Component {
         const day = e.target.id;
         const task = e.target.parentElement.parentElement.id;
         const currentStatus = this.props.tasks[task].status[day];
+        if (currentStatus === 5) {
+            console.log('clear move to next week')
+        }
         this.props.changeTaskStatus(day, task, currentStatus);
-        this.statusCheck(task);
+        this.statusCheck(task, currentStatus);
     }
 
-    statusCheck (id) {
+    statusCheck (id, status) {
         clearTimeout(this.timer);
-        this.timer = setTimeout(() => this.props.updateStatus(id), 500)
+        this.timer = setTimeout(() => {
+            this.props.updateStatus(id);
+            if (status === 4) {
+                this.props.moveTaskToNextWeek(id)
+            }
+        }, 500)
     }
 
     render() {
@@ -82,7 +90,8 @@ const mapDispatchToProps = dispatch => {
     return {
         getTasks: (weekNumber) => dispatch(action.getTasks(weekNumber)),
         changeTaskStatus: (dayId, taskId, currentStatus) => dispatch(action.changeTaskStatus(dayId, taskId, currentStatus)),
-        updateStatus: (id) => dispatch(action.updateStatusProcess(id))
+        updateStatus: (id) => dispatch(action.updateStatusProcess(id)),
+        moveTaskToNextWeek: (id) => dispatch(action.moveTaskToNextWeek(id))
     }
 }
 

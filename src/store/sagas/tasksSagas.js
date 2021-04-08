@@ -1,14 +1,14 @@
 import { put, select, delay, call } from 'redux-saga/effects';
 import firebase from '../../fbConfig';
 import * as action from '../actions/tasksActions';
-import { getTasks } from './selectors';
+import { getTasks, currentWeek } from './selectors';
 
 const db = firebase.firestore();
 
 export function* getTasksSaga (data) {
     yield put(action.initGetTasksList())
     try {
-        const snapshot = yield db.collection('tasks').where('week', '==', data.week).get();
+        const snapshot = yield db.collection('tasks').where('week', 'array-contains', data.week).get();
         let tasks;
         if (snapshot.empty) {
             tasks = {}
@@ -23,7 +23,7 @@ export function* getTasksSaga (data) {
             }}); 
         }
 
-        yield put(action.getTasksListSuccess(tasks))
+        yield put(action.getTasksListSuccess(tasks, data.week))
     } catch (error) {
         yield put(action.getTasksListError('Ups... Something went wrong'))
     }
@@ -53,3 +53,24 @@ export function* updateTaskStatusSaga (data) {
         yield put(action.updateTaskFail())
     }
 };
+
+export function* moveTaskToNextWeek (data) {
+    const week = yield select(currentWeek);
+    yield put(action.initMoveTaskToNextWeek())
+    try {
+        yield db.collection('tasks').doc(data.id).update({week: firebase.firestore.FieldValue.arrayUnion(week + 1)});
+        yield put(action.moveTaskToNextWeekSuccess())
+    } catch (error) {
+        console.log(error)
+        yield put(action.moveTaskToNextWeekError())
+    }
+}
+
+export function* removeTaskFromNextWeek (data) {
+    const week = yield select(currentWeek);
+    try {
+        yield db.collection('tasks').doc(data.id).update({week: firebase.firestore.FieldValue.arrayRemove(week + 1)})
+    } catch (error) {
+        
+    }
+}

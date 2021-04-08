@@ -64,7 +64,7 @@ class AddTask extends React.Component {
     addTaskProcess = e => {
         e.preventDefault();
         const data = {
-            week: this.props.date.isoWeek(),
+            week: [this.props.date.isoWeek()],
             title: this.state.newTask.title.trim(),
             description: this.state.newTask.description.trim(),
             status: {...this.state.newTask.status}
@@ -74,7 +74,6 @@ class AddTask extends React.Component {
     }
 
     render() {
-        console.log(this.state.newTask)
         let taskFrom = <AddTaskForm title={this.state.newTask.title} 
             description={this.state.newTask.description}
             inputChange={this.inputChange}

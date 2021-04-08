@@ -13,10 +13,11 @@ export const getTasksListError = (error) => {
     }
 }
 
-export const getTasksListSuccess = (tasks) => {
+export const getTasksListSuccess = (tasks, week) => {
     return {
         type: actionsTypes.GET_TASKS_LIST_SUCCESS,
-        tasks: tasks
+        tasks: tasks,
+        week: week
     }
 }
 
@@ -100,5 +101,30 @@ export const updateStatusProcess = (id) => {
     return {
         type: actionsTypes.UPDATE_TASK_PROCESS,
         id: id,
+    }
+}
+
+export const initMoveTaskToNextWeek = () => {
+    return {
+        type: actionsTypes.INIT_MOVE_TASK_TO_NEXT_WEEK
+    }
+}
+
+export const moveTaskToNextWeekError = () => {
+    return {
+        type: actionsTypes.MOVE_TASK_TO_NEXT_WEEK_ERROR
+    }
+}
+
+export const moveTaskToNextWeekSuccess = () => {
+    return {
+        type: actionsTypes.MOVE_TASK_TO_NEXT_WEEK_SUCCESS
+    }
+}
+
+export const moveTaskToNextWeek = (id) => {
+    return {
+        type: actionsTypes.MOVE_TASK_TO_NEXT_WEEK,
+        id: id
     }
 }
