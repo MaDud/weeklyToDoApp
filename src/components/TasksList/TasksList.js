@@ -36,22 +36,23 @@ class TasksList extends React.Component {
 
     changeStatus (e) {
         const day = e.target.id;
+        const dayOfWeek = dayjs.unix(day).isoWeekday();
         const task = e.target.parentElement.parentElement.id;
         const currentStatus = this.props.tasks[task].status[day];
-        if (currentStatus === 5) {
+        if (currentStatus === 5 || (day === 6 && currentStatus === 4) || (day === 6 && currentStatus === 2)) {
             this.props.cancelMoveTaskToNextWeek(task)
         }
         this.props.changeTaskStatus(day, task, currentStatus);
-        this.statusCheck(task, currentStatus);
+        this.statusCheck(task, currentStatus, dayOfWeek);
     }
 
-    statusCheck (id, status) {
+    statusCheck (id, status, day) {
         clearTimeout(this.timer);
         this.timer = setTimeout(() => {
             this.props.updateStatus(id);
-            if (status === 4) {
+            if (status === 4 || (day === 6 && status === 3) || (day === 6 && status === 1)) {
                 this.props.moveTaskToNextWeek(id)
-            }
+            } 
         }, 500)
     }
 

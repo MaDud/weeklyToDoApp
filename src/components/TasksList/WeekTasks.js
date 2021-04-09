@@ -3,6 +3,7 @@ import TaskStatus from './TaskStatus';
 import Button from '../UI/Button';
 import '../../styles/TasksList/weekTasks.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import dayjs from 'dayjs';
 
 class WeekTasks extends React.Component {
 
@@ -81,11 +82,26 @@ class WeekTasks extends React.Component {
     tasksControl (weekTimestamps, currentDay, status) {
 
         return weekTimestamps.map( (day, index) => {
+            let disabled = false;
+            for (let prevDay in status) {
+                const prevDayStatus = status[prevDay]
+                const prevDayDate = dayjs.unix(prevDay);
+                const dayDate = dayjs.unix(day);
+                if (prevDay < day && (
+                    (prevDayStatus === 3 || prevDayStatus === 6) ||
+                    [prevDayStatus === 5 && 
+                        ((prevDayDate.isoWeek() === dayDate.isoWeek() && dayDate.isoWeekday() !== 7) || 
+                        (prevDayDate.isoWeekday() === 7 && dayDate.isoWeek() === prevDayDate.isoWeek() + 1))]
+                    )) {
+                    disabled = true
+                }
+            }
+
             return <td 
                     key={day}
                     className={["tasksList__day",
                                 index !== currentDay ? "tasksList__day--invisible" :null].join(' ')}>
-                        <Button clicked={this.props.clicked} id={day} btnStyle="button--transparent button__statusIcon">
+                        <Button clicked={this.props.clicked} id={day} btnStyle="button--transparent button__statusIcon" disabled={disabled}>
                             <TaskStatus status={status[day] ? status[day] : 0} />
                         </Button>
                     </td>

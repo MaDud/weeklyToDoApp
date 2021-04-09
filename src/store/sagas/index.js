@@ -5,7 +5,8 @@ import {getTasksSaga,
         addTaskSaga,
         updateTaskStatusSaga,
         moveTaskToNextWeek,
-        removeTaskFromNextWeek}
+        removeTaskFromNextWeek,
+        checkStatusOptions}
 from './tasksSagas';
 
 export function* tasksWatcher () {
