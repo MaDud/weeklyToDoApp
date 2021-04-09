@@ -101,7 +101,7 @@ class WeekTasks extends React.Component {
                     key={day}
                     className={["tasksList__day",
                                 index !== currentDay ? "tasksList__day--invisible" :null].join(' ')}>
-                        <Button clicked={this.props.clicked} id={day} btnStyle="button--transparent button__statusIcon" disabled={disabled}>
+                        <Button clicked={this.props.clicked} id={day} btnStyle={["button--transparent", "button__statusIcon", disabled ? "button__statusIcon--disabled" : null].join(' ')} disabled={disabled}>
                             <TaskStatus status={status[day] ? status[day] : 0} />
                         </Button>
                     </td>
