@@ -89,9 +89,9 @@ class WeekTasks extends React.Component {
                 const dayDate = dayjs.unix(day);
                 if (prevDay < day && (
                     (prevDayStatus === 3 || prevDayStatus === 6) ||
-                    [prevDayStatus === 5 && 
-                        ((prevDayDate.isoWeek() === dayDate.isoWeek() && dayDate.isoWeekday() !== 7) || 
-                        (prevDayDate.isoWeekday() === 7 && dayDate.isoWeek() === prevDayDate.isoWeek() + 1))]
+                    (prevDayStatus === 5 && (
+                        (prevDayDate.isoWeek() === dayDate.isoWeek() && dayDate.isoWeekday() !== 7) || 
+                        (prevDayDate.isoWeekday() === 7 && dayDate.isoWeek() === prevDayDate.isoWeek() + 1)))
                     )) {
                     disabled = true
                 }
