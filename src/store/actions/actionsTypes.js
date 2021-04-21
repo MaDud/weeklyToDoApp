@@ -2,6 +2,7 @@ export const NEXT_WEEK = 'NEXT_WEEK';
 export const PREV_WEEK = 'PREV_WEEK';
 export const NEXT_DAY = 'NEXT_DAY';
 export const PREV_DAY = 'PREV_DAY';
+export const CURRENT_DATE = 'CURRENT_DATE';
 
 //get tasks list from database
 export const GET_TASKS_LIST_PROCESS = 'GET_TASKS_LIST_PROCESS';
@@ -16,3 +17,10 @@ export const ADD_TASK_SUCCESS = 'ADD_TASK_SUCCESS';
 export const ADD_TASK_ERROR = 'ADD_TASK_ERROR';
 export const ADD_TASK_PROCESS = 'ADD_TASK_PROCESS';
 export const CLEAR_ADD_TASK = 'CLEAR_ADD_TASK';
+
+//change status of task
+export const CHANGE_TASK_STATUS = 'CHANGE_TASK_STATUS';
+export const INIT_UPDATE_TASK_STATUS = 'INIT_UPDATE_TASK_STATUS';
+export const UPDATE_TASK_SUCCESS = 'UPDATE_TASK_SUCCESS';
+export const UPDATE_TASK_FAIL = 'UPDATE_TASK_FAIL';
+export const UPDATE_TASK_PROCESS = 'UPDATE_TASK_PROCESS';

@@ -1,0 +1,74 @@
+@import './global_styles/__general';
+@import './global_styles/__mq';
+
+.legend {
+    position: fixed;
+    right: -15.5rem;
+    top: 12%;
+    display: flex;
+    width: max-content;
+    margin: 0;
+
+    &__open {
+        right: 1%;
+    }
+
+    &__symbol {
+        text-align: center;
+    }
+
+    &__description {
+        @include basicText {
+            font-size: 1rem;
+            text-align: left;
+        }
+    }
+
+    &__head {
+        @include subtitle {
+            font-size: $basicFontSize;
+            padding: 0.5rem 0;
+        }
+    }
+
+    &__title {
+        display: none;
+    }
+
+    button {
+        transform: rotate(270deg);
+        height: inherit;
+        margin: 0;
+    }
+
+    @include mq(smartphone) {
+        position: relative;
+        right: 0;
+        top: 0;
+        flex-direction: column;
+        width: 100%;
+        padding: 0 0 4rem 0;
+        margin: 2rem 0;
+        background-color: lighten($bgColor, 10%);
+
+        button {
+            display: none;
+        }
+
+        &__title {
+            display: inline-block;
+            @include subtitle {
+                text-align: center;
+            }
+        }
+
+        &__table {
+            width: 100%
+        }
+
+        &__description {
+            text-align: center;
+        }
+    }
+
+}

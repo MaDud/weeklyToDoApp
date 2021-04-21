@@ -1,0 +1,15 @@
+@import './global_styles/__mq';
+@import './global_styles/__general';
+
+.status {
+    color: $bgColor;
+    font-size: $basicFontSize;
+    padding: 0.5rem;
+    display: block;
+    border: 1px solid transparent;
+
+    &:hover {
+        border: $extraColor 1px solid;
+        border-radius: 50%
+    }
+}

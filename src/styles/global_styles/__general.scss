@@ -7,6 +7,29 @@ $extraColor: #BB9684;
 $titleFont: 'Calligraffitti', cursive;
 $basicFont: 'Montserrat', sans-serif;
 
-$basicFontSize: 1.5rem;
+$basicFontSize: 1.2rem;
+$subtitleFontSize: 1.5rem;
 $titleFontSize: 2rem;
-$dayColumnWidth: 4rem
+$dayColumnWidth: 4rem;
+
+@mixin mainTitle {
+    font-size: $titleFontSize;
+    font-family: $titleFont;
+    color: $colorTitle;
+    margin: 1rem auto;
+    @content
+};
+
+@mixin subtitle {
+    font-size: $subtitleFontSize;
+    font-family: $titleFont;
+    color: $colorTitle;
+    @content
+};
+
+@mixin basicText {
+    font-size: $basicFontSize;
+    font-family: $basicFont;
+    color: #000;
+    @content
+}

@@ -16,6 +16,7 @@ class AddTask extends React.Component {
             newTask: {
                 title: '',
                 description: '',
+                status: {}
             },
         };
         this.changeAddFormVisibility = this.changeAddFormVisibility.bind(this);
@@ -45,7 +46,7 @@ class AddTask extends React.Component {
     inputChange (e) {
         const newTask = this.state.newTask;
         const id = e.target.id;
-        const value = e.target.value.trim();
+        const value = e.target.value;
 
         newTask[id] = value;
 
@@ -64,7 +65,9 @@ class AddTask extends React.Component {
         e.preventDefault();
         const data = {
             week: this.props.date.isoWeek(),
-            ...this.state.newTask
+            title: this.state.newTask.title.trim(),
+            description: this.state.newTask.description.trim(),
+            status: {...this.state.newTask.status}
         };
         this.props.addTask(data);
         this.clearData()
@@ -93,7 +96,7 @@ class AddTask extends React.Component {
                         {taskFrom}
                     </article>
                 </Modal>
-                <Button clicked={this.changeAddFormVisibility} btnStyle='button--dark'>
+                <Button clicked={this.changeAddFormVisibility} btnStyle='button--dark addTask__openForm' id="fixed">
                     Add task
                 </Button>
             </React.Fragment>

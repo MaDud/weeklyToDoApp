@@ -15,6 +15,11 @@
         background-color: $colorTitle; 
     }
 
+    &--dark:hover {
+        color: $colorTitle;
+        background-color: $bgColor;
+    }
+
     &--fair {
         color: $colorTitle;
         background-color: $bgColor; 

@@ -1,4 +1,6 @@
 import React from 'react';
+import TaskStatus from './TaskStatus';
+import Button from '../UI/Button';
 import '../../styles/TasksList/weekTasks.scss';
 
 class WeekTasks extends React.Component {
@@ -11,7 +13,7 @@ class WeekTasks extends React.Component {
     tableHeads(currentDay) {
 
         return this.weekShort.map( (day,index) => {
-            return <th key={index} 
+            return <th key={index} id={this.props.weekTimestamps[index]}
                         className={["tasksList__title",
                             "tasksList__day",
                             index !== currentDay ? "tasksList__title--invisible" :null].join(' ')}>
@@ -20,13 +22,17 @@ class WeekTasks extends React.Component {
         })
     }
 
-    tasksControl (weekTimestamps, currentDay) {
+    tasksControl (weekTimestamps, currentDay, status) {
 
         return weekTimestamps.map( (day, index) => {
-            return <td key={index}
+            return <td 
+                    key={day}
+                    // onClick={this.props.clicked}
                     className={["tasksList__day",
                                 index !== currentDay ? "tasksList__title--invisible" :null].join(' ')}>
-                        <input type="checkbox" id={day} />
+                        <Button clicked={this.props.clicked} id={day} btnStyle="button--transparent">
+                            <TaskStatus status={status[day] ? status[day] : 0} />
+                        </Button>
                     </td>
         });
     }
@@ -34,9 +40,9 @@ class WeekTasks extends React.Component {
     tableBody(tasks, weekTimestamps, currentDay) {
 
         return  Object.keys(tasks).map( task => {
-            return <tr className="tasksList__row" key={task}>
-                        {this.tasksControl(weekTimestamps,currentDay)}
-                        <td className = "taskList__task">{tasks[task].title}</td>
+            return <tr className="tasksList__row" key={task} id={task}>
+                        {this.tasksControl(weekTimestamps,currentDay, tasks[task].status)}
+                        <td className = "tasksList__task">{tasks[task].title}</td>
                     </tr>
         })
     }

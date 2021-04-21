@@ -47,6 +47,19 @@ const TasksReducer = (state = initialState, action) => {
                 error: false,
                 message: ''
             }
+        case actionsTypes.CHANGE_TASK_STATUS: {
+            return {
+                ...state,
+                tasks: {...state.tasks,
+                        [action.task]: {
+                            ...state.tasks[action.task],
+                            status: {
+                                ...state.tasks[action.task].status,
+                                [action.id]: action.status
+                            }
+                        }}
+            }
+        }
         default:
             return state
     }

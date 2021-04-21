@@ -1,4 +1,7 @@
+@import '../global_styles/__mq';
+
 .addTask {
+    
     flex: 1;
     display: flex;
     align-items: center;
@@ -7,6 +10,17 @@
         align-self: flex-end;
         margin: 1rem;
         width: 2rem;
+    }
+
+    @include mq(smartphone) {
+        &__openForm {
+            position: fixed;
+            z-index: 3;
+            bottom: 0;
+            margin: 0;
+            width: 100%;
+            border-radius: 0;
+        }
     }
 
 }

@@ -1,0 +1,9 @@
+@import '../global_styles/__general';
+
+.icon {
+    pointer-events: none;
+    flex: 1;
+    @include subtitle {
+        font-size: 1.2rem
+    }
+}
