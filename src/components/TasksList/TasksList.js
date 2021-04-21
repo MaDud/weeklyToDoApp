@@ -60,7 +60,7 @@ class TasksList extends React.Component {
                 this.props.moveTaskToNextWeek(taskId)
             };
             this.props.updateStatus(taskId); 
-        }, 600)
+        }, 500)
     }
 
     render() {
