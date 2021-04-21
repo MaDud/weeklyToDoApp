@@ -4,6 +4,7 @@ import Button from '../UI/Button';
 import '../../styles/TasksList/weekTasks.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import dayjs from 'dayjs';
+import {status, weekday} from './enums';
 
 class WeekTasks extends React.Component {
 
@@ -79,19 +80,19 @@ class WeekTasks extends React.Component {
         })
     }
 
-    tasksControl (weekTimestamps, currentDay, status) {
+    tasksControl (weekTimestamps, currentDay, taskStatus) {
 
         return weekTimestamps.map( (day, index) => {
             let disabled = false;
-            for (let prevDay in status) {
-                const prevDayStatus = status[prevDay]
+            for (let prevDay in taskStatus) {
+                const prevDayStatus = taskStatus[prevDay]
                 const prevDayDate = dayjs.unix(prevDay);
                 const dayDate = dayjs.unix(day);
                 if (prevDay < day && (
-                    (prevDayStatus === 3 || prevDayStatus === 6) ||
-                    (prevDayStatus === 5 && (
-                        (prevDayDate.isoWeek() === dayDate.isoWeek() && dayDate.isoWeekday() !== 7) || 
-                        (prevDayDate.isoWeekday() === 7 && dayDate.isoWeek() === prevDayDate.isoWeek() + 1)))
+                    (prevDayStatus === status.FINISHED || prevDayStatus === status.CANCELED) ||
+                    (prevDayStatus === status.MOVED_TO_NEXT_WEEK && (
+                        (prevDayDate.isoWeek() === dayDate.isoWeek() && dayDate.isoWeekday() !== weekday.MONDAY) || 
+                        (prevDayDate.isoWeekday() === weekday.MONDAY && dayDate.isoWeek() === prevDayDate.isoWeek() + 1)))
                     )) {
                     disabled = true
                 }
@@ -102,7 +103,7 @@ class WeekTasks extends React.Component {
                     className={["tasksList__day",
                                 index !== currentDay ? "tasksList__day--invisible" :null].join(' ')}>
                         <Button clicked={this.props.clicked} id={day} btnStyle={["button--transparent", "button__statusIcon", disabled ? "button__statusIcon--disabled" : null].join(' ')} disabled={disabled}>
-                            <TaskStatus status={status[day] ? status[day] : 0} />
+                            <TaskStatus status={taskStatus[day] ? taskStatus[day] : 0} />
                         </Button>
                     </td>
         });

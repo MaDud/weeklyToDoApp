@@ -5,6 +5,7 @@ import WeekTasks from './WeekTasks';
 import EmptyList from './EmptyList';
 import Spinner from '../UI/Spinner';
 import * as action from '../../store/actions/tasksActions';
+import {status, weekday} from './enums';
 
 class TasksList extends React.Component {
 
@@ -38,33 +39,32 @@ class TasksList extends React.Component {
         const day = e.target.id;
         const task = e.target.parentElement.parentElement.id;
         const currentStatus = this.props.tasks[task].status[day];
-        if (currentStatus === 5 || (day === 6 && currentStatus === 4) || (day === 6 && currentStatus === 2)) {
+        if (currentStatus === status.MOVED_TO_NEXT_WEEK || (day === weekday.SUNDAY && currentStatus === status.MOVED_TO_NEXT_DAY) || (day === weekday.SUNDAY && currentStatus === status.IN_PROGRESS)) {
             this.props.cancelMoveTaskToNextWeek(task)
         }
         this.props.changeTaskStatus(day, task, currentStatus);
         this.statusCheck(task, currentStatus, day);
     }
 
-    statusCheck (taskId, status, day) {
+    statusCheck (taskId, currentStatus, day) {
         clearTimeout(this.timer[taskId]);
         this.timer[taskId] = setTimeout(() => {
             const dayOfWeek = dayjs.unix(day).isoWeekday();
-            if (status === 2 || status === 5 || status === 4) {
+            if (currentStatus === status.IN_PROGRESS || currentStatus === status.MOVED_TO_NEXT_WEEK || currentStatus === status.MOVED_TO_NEXT_DAY) {
                 for (let dayId in this.props.tasks[taskId].status) {
                     if (dayId > day) {
-                        this.props.changeTaskStatus(dayId, taskId, 6)
+                        this.props.changeTaskStatus(dayId, taskId, status.CANCELED)
                     }
                 }
             }
-            if (status === 4 || (dayOfWeek === 6 && status === 3) || (dayOfWeek === 6 && status === 1)) {
+            if (currentStatus === status.MOVED_TO_NEXT_DAY || (dayOfWeek === weekday.SUNDAY && currentStatus === status.FINISHED) || (dayOfWeek === weekday.SUNDAY && currentStatus === status.PLANNED)) {
                 this.props.moveTaskToNextWeek(taskId)
             };
             this.props.updateStatus(taskId); 
-        }, 1000)
+        }, 600)
     }
 
     render() {
-        console.log(this.timer)
 
         const listLength = Object.keys(this.props.tasks).length;
         let content = <Spinner/>;

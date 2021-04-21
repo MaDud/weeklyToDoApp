@@ -1,6 +1,7 @@
 import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import '../../styles/TaskStatus/taskStatus.scss';
+import {status} from './enums';
 
 class TaskStatus extends React.Component {
 
@@ -9,21 +10,21 @@ class TaskStatus extends React.Component {
         this.statusIcon = this.statusIcon.bind(this)
     }
 
-    statusIcon (status) {
-        switch (status) {
-            case 0: 
+    statusIcon (value) {
+        switch (value) {
+            case status.NONE: 
                 return <span className='icon'></span>;
-            case 1:
+            case status.PLANNED:
                 return <FontAwesomeIcon icon="circle" className='icon'/>;
-            case 2:
+            case status.IN_PROGRESS:
                 return <FontAwesomeIcon icon="ellipsis-h" className='icon'/>;
-            case 3:
+            case status.FINISHED:
                 return <FontAwesomeIcon icon="star" className='icon'/>;
-            case 4:
+            case status.MOVED_TO_NEXT_DAY:
                 return <FontAwesomeIcon icon="angle-right" className='icon'/>;
-            case 5:
+            case status.MOVED_TO_NEXT_WEEK:
                 return <FontAwesomeIcon icon="angle-double-right" className='icon'/>;
-            case 6:
+            case status.CANCELED:
                 return <FontAwesomeIcon icon="times" className='icon'/>
             default:
                 return ''
