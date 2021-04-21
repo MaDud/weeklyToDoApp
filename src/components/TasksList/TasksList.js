@@ -10,7 +10,7 @@ class TasksList extends React.Component {
 
     constructor(props) {
         super(props);
-        this.timer = null;
+        this.timer = {};
         this.changeStatus = this.changeStatus.bind(this)
     }
 
@@ -46,8 +46,8 @@ class TasksList extends React.Component {
     }
 
     statusCheck (taskId, status, day) {
-        clearTimeout(this.timer);
-        this.timer = setTimeout(() => {
+        clearTimeout(this.timer[taskId]);
+        this.timer[taskId] = setTimeout(() => {
             const dayOfWeek = dayjs.unix(day).isoWeekday();
             if (status === 2 || status === 5 || status === 4) {
                 for (let dayId in this.props.tasks[taskId].status) {
@@ -60,10 +60,11 @@ class TasksList extends React.Component {
                 this.props.moveTaskToNextWeek(taskId)
             };
             this.props.updateStatus(taskId); 
-        }, 500)
+        }, 1000)
     }
 
     render() {
+        console.log(this.timer)
 
         const listLength = Object.keys(this.props.tasks).length;
         let content = <Spinner/>;

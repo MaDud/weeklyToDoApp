@@ -87,7 +87,7 @@ When you set status 'planned' or 'canceled' then statuses for days after will be
 Legend is available on desktop as icon on right side of page. Schema: click to show, click to hide.
 On mobile it is available below tasks' list.
 
-Every status has it own icon. as it is showed below
+Every status has it own icon as it is showed below
 
 
 
