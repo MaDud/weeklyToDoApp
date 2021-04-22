@@ -91,9 +91,9 @@ class AddTask extends React.Component {
                 <Modal show={this.state.show}
                         clicked={this.changeAddFormVisibility}>
                     <Button clicked={this.changeAddFormVisibility} btnStyle='button--transparent addTask__button'>x</Button>
-                    <article className='addTask'>
+                    <div className='addTask'>
                         {taskFrom}
-                    </article>
+                    </div>
                 </Modal>
                 <Button clicked={this.changeAddFormVisibility} btnStyle='button--dark addTask__openForm' id="fixed">
                     Add task

@@ -8,8 +8,7 @@ import '../../styles/statusBar.scss';
 
 class StatusBar extends React.Component {
 
-    render() {
-
+    checkWeekStatus() {
         let statusIcon;
         if (this.props.date.format('YYYY-MM-DD') === dayjs().format('YYYY-MM-DD')) {
             statusIcon = null
@@ -23,9 +22,14 @@ class StatusBar extends React.Component {
                             </Button>)
         }
 
+        return statusIcon
+    }
+
+    render() {
+
         return (
             <React.Fragment>
-                {statusIcon}
+                {this.checkWeekStatus()}
             </React.Fragment>
         )
     }
