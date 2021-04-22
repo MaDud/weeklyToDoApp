@@ -40,6 +40,10 @@
         color: $extraColor;
         cursor: not-allowed
     }
+
+    &__description {
+        display: none;
+    }
     
 
     @include mq(smartphone) {

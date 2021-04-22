@@ -13,11 +13,15 @@ class StatusBar extends React.Component {
         if (this.props.date.format('YYYY-MM-DD') === dayjs().format('YYYY-MM-DD')) {
             statusIcon = null
         } else if (this.props.date.isoWeek() === dayjs().isoWeek()) {
-            statusIcon =  ( <Button btnStyle='button--transparent button--invisibleOnDesktop' clicked={this.props.currentDate.bind(this)}>
+            statusIcon =  ( <Button btnStyle='button--transparent button--invisibleOnDesktop' 
+                                clicked={this.props.currentDate.bind(this)}
+                                description='Back to current calendar day'>
                                 <FontAwesomeIcon icon='adjust' className='status'/>
                             </Button>)
         } else {
-            statusIcon = (  <Button btnStyle='button--transparent' clicked={this.props.currentDate.bind(this)}>
+            statusIcon = (  <Button btnStyle='button--transparent' 
+                            clicked={this.props.currentDate.bind(this)}
+                            description='Back to current calendar week'>
                                 <FontAwesomeIcon icon='circle' className='status'/>
                             </Button>)
         }
