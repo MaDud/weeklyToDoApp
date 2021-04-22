@@ -1,6 +1,7 @@
 import * as actionsTypes from '../actions/actionsTypes';
 
 const initialState = {
+    week: 0,
     tasks: {},
     loading: true,
     error: false,
@@ -22,7 +23,8 @@ const TasksReducer = (state = initialState, action) => {
             return {
                 ...state,
                 tasks: action.tasks,
-                loading: false
+                loading: false,
+                week: action.week
             };
         case actionsTypes.GET_TASKS_LIST_ERROR:
         case actionsTypes.ADD_TASK_ERROR:

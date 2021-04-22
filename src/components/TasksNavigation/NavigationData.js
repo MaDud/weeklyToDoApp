@@ -13,15 +13,15 @@ class NavigationData extends React.Component {
 
         return (
             <hgroup className='weekInfo'>
-                <h2 className='weekInfo__mainTitle'>
+                <h1 className='weekInfo__mainTitle'>
                     Week {weekNumber}
-                </h2>
-                <h3 className={['weekInfo__subtitle', 'weekInfo__subtitle--day'].join(' ')}>
+                </h1>
+                <h2 className={['weekInfo__subtitle', 'weekInfo__subtitle--day'].join(' ')}>
                     {dayOfWeek}
-                </h3>
-                <h3 className={['weekInfo__subtitle', 'weekInfo__subtitle--week'].join(' ')}>
+                </h2>
+                <h2 className={['weekInfo__subtitle', 'weekInfo__subtitle--week'].join(' ')}>
                     {weekPeriod}
-                </h3>
+                </h2>
             </hgroup>
         )
     }

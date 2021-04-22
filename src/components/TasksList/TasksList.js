@@ -5,12 +5,13 @@ import WeekTasks from './WeekTasks';
 import EmptyList from './EmptyList';
 import Spinner from '../UI/Spinner';
 import * as action from '../../store/actions/tasksActions';
+import {status, weekday} from './enums';
 
 class TasksList extends React.Component {
 
     constructor(props) {
         super(props);
-        this.timer = null;
+        this.timer = {};
         this.changeStatus = this.changeStatus.bind(this)
     }
 
@@ -38,13 +39,29 @@ class TasksList extends React.Component {
         const day = e.target.id;
         const task = e.target.parentElement.parentElement.id;
         const currentStatus = this.props.tasks[task].status[day];
+        if (currentStatus === status.MOVED_TO_NEXT_WEEK || (day === weekday.SUNDAY && currentStatus === status.MOVED_TO_NEXT_DAY) || (day === weekday.SUNDAY && currentStatus === status.IN_PROGRESS)) {
+            this.props.cancelMoveTaskToNextWeek(task)
+        }
         this.props.changeTaskStatus(day, task, currentStatus);
-        this.statusCheck(task);
+        this.statusCheck(task, currentStatus, day);
     }
 
-    statusCheck (id) {
-        clearTimeout(this.timer);
-        this.timer = setTimeout(() => this.props.updateStatus(id), 500)
+    statusCheck (taskId, currentStatus, day) {
+        clearTimeout(this.timer[taskId]);
+        this.timer[taskId] = setTimeout(() => {
+            const dayOfWeek = dayjs.unix(day).isoWeekday();
+            if (currentStatus === status.IN_PROGRESS || currentStatus === status.MOVED_TO_NEXT_WEEK || currentStatus === status.MOVED_TO_NEXT_DAY) {
+                for (let dayId in this.props.tasks[taskId].status) {
+                    if (dayId > day) {
+                        this.props.changeTaskStatus(dayId, taskId, status.CANCELED)
+                    }
+                }
+            }
+            if (currentStatus === status.MOVED_TO_NEXT_DAY || (dayOfWeek === weekday.SUNDAY && currentStatus === status.FINISHED) || (dayOfWeek === weekday.SUNDAY && currentStatus === status.PLANNED)) {
+                this.props.moveTaskToNextWeek(taskId)
+            };
+            this.props.updateStatus(taskId); 
+        }, 600)
     }
 
     render() {
@@ -82,7 +99,9 @@ const mapDispatchToProps = dispatch => {
     return {
         getTasks: (weekNumber) => dispatch(action.getTasks(weekNumber)),
         changeTaskStatus: (dayId, taskId, currentStatus) => dispatch(action.changeTaskStatus(dayId, taskId, currentStatus)),
-        updateStatus: (id) => dispatch(action.updateStatusProcess(id))
+        updateStatus: (id) => dispatch(action.updateStatusProcess(id)),
+        moveTaskToNextWeek: (id) => dispatch(action.moveTaskToNextWeek(id)),
+        cancelMoveTaskToNextWeek: (id) => dispatch(action.cancelMoveTaskToNextWeek(id))
     }
 }
 
