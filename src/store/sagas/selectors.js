@@ -1,3 +1,3 @@
-export const getTasks = state => state.tasks.tasks;
-export const currentWeek = state => state.tasks.week;
-export const tasksState = state => state.tasks
+export const getTasks = state => state.tasksState.tasks;
+export const currentWeek = state => state.tasksState.week;
+export const tasksState = state => state.tasksState

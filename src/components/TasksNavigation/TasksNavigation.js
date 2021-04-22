@@ -59,7 +59,7 @@ class TasksNavigation extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        date: state.date.date
+        date: state.dateState.date
     }
 }
 

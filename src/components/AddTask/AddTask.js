@@ -105,10 +105,10 @@ class AddTask extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        date: state.date.date,
-        loading: state.tasks.loading,
-        error: state.tasks.error,
-        message: state.tasks.message
+        date: state.dateState.date,
+        loading: state.tasksState.loading,
+        error: state.tasksState.error,
+        message: state.tasksState.message
     }
 }
 

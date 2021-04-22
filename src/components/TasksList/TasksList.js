@@ -89,9 +89,9 @@ class TasksList extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        date: state.date.date,
-        loading: state.tasks.loading,
-        tasks: state.tasks.tasks,
+        date: state.dateState.date,
+        loading: state.tasksState.loading,
+        tasks: state.tasksState.tasks,
     }
 }
 

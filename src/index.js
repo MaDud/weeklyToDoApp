@@ -50,8 +50,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const sagaMiddleware = createSagaMiddleware();
 
 const reductor = combineReducers({
-  date: DateReducer,
-  tasks: TasksReducer,
+  dateState: DateReducer,
+  tasksState: TasksReducer,
   firestore: firestoreReducer
 })
 
