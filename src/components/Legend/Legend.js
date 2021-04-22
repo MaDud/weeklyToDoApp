@@ -64,7 +64,7 @@ class Legend extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        tasks: state.tasks.tasks
+        tasks: state.tasksState.tasks
     }
 }
 

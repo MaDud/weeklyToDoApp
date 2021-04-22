@@ -6,6 +6,7 @@ import Spinner from '../UI/Spinner';
 import '../../styles/AddTask/addTask.scss';
 import {connect} from 'react-redux';
 import * as action from '../../store/actions/tasksActions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class AddTask extends React.Component {
 
@@ -90,10 +91,14 @@ class AddTask extends React.Component {
             <React.Fragment>
                 <Modal show={this.state.show}
                         clicked={this.changeAddFormVisibility}>
-                    <Button clicked={this.changeAddFormVisibility} btnStyle='button--transparent addTask__button'>x</Button>
-                    <article className='addTask'>
+                    <Button clicked={this.changeAddFormVisibility} 
+                    btnStyle='button--transparent addTask__button'
+                    description='close'>
+                        <FontAwesomeIcon icon="times" className="addTask__close"/>
+                    </Button>
+                    <div className='addTask'>
                         {taskFrom}
-                    </article>
+                    </div>
                 </Modal>
                 <Button clicked={this.changeAddFormVisibility} btnStyle='button--dark addTask__openForm' id="fixed">
                     Add task
@@ -105,10 +110,10 @@ class AddTask extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        date: state.date.date,
-        loading: state.tasks.loading,
-        error: state.tasks.error,
-        message: state.tasks.message
+        date: state.dateState.date,
+        loading: state.tasksState.loading,
+        error: state.tasksState.error,
+        message: state.tasksState.message
     }
 }
 

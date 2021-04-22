@@ -15,6 +15,7 @@ class Button extends React.Component {
                     type={this.props.type}
                     disabled={this.props.disabled}>
                 {this.props.children}
+                <span className='button__description'>{this.props.description}</span>
             </button>
         )
     }
