@@ -70,7 +70,7 @@ There are seven different status (connection between status and icon described i
 - moved to next week;
 - canceled.
 
-Task status is saved in database basing on timer - after 500 milliseconds wihout changing status after last click.
+Task status is saved in database basing on timer - after 800 milliseconds wihout changing status after last click.
 
 #### Tasks' status rules
 
