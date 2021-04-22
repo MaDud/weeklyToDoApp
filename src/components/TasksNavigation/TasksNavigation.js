@@ -14,12 +14,12 @@ class TasksNavigation extends React.Component {
     }
 
     changeView (e) {
-        const id = e.target.id;
-        if ( id === 'prevWeek') {
+        const buttonId = e.target.id;
+        if ( buttonId === 'prevWeek') {
             this.props.changeWeek(this.props.date, actionsTypes.PREV_WEEK)
-        } else if (id === 'nextWeek') {
+        } else if (buttonId === 'nextWeek') {
             this.props.changeWeek(this.props.date, actionsTypes.NEXT_WEEK)
-        } else if (id === 'prevDay') {
+        } else if (buttonId === 'prevDay') {
             this.props.changeDay(this.props.date, actionsTypes.PREV_DAY)
         } else {
             this.props.changeDay(this.props.date, actionsTypes.NEXT_DAY)
