@@ -10,11 +10,11 @@ import Legend from './components/Legend/Legend';
 function App() {
   return (
     <React.Fragment>
-      <header className='header'>
+      <header className='header' data-test='app_header'>
         <Logo />
         <StatusBar />
       </header>
-      <main className='main'>
+      <main className='main' data-test='app_main'>
         <TasksNavigation />
         <TasksList />
         <AddTask />
