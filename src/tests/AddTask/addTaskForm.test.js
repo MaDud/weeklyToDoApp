@@ -1,9 +1,6 @@
 import React from 'react';
-import {configure, shallow} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-17-updated';
+import {shallow} from 'enzyme';
 import AddTaskForm from '../../components/AddTask/AddTaskFrom';
-
-configure({adapter: new Adapter()});
 
 test('render component AddTaskFrom', () => {
     const wrapper = shallow(<AddTaskForm />);

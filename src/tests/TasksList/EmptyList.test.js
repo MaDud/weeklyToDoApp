@@ -1,9 +1,6 @@
 import React from 'react';
-import {shallow, configure} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-17-updated';
+import {shallow} from 'enzyme';
 import EmptyList from '../../components/TasksList/EmptyList';
-
-configure({adapter: new Adapter()})
 
 test('render EmptyList component', () => {
     const wrapper = shallow(<EmptyList />);
