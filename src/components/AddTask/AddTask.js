@@ -74,7 +74,7 @@ class AddTask extends React.Component {
         this.clearData()
     }
 
-    render() {
+    tasksView () {
         let taskFrom = <AddTaskForm title={this.state.newTask.title} 
             description={this.state.newTask.description}
             inputChange={this.inputChange}
@@ -86,6 +86,11 @@ class AddTask extends React.Component {
         } else if (this.props.error) {
             taskFrom = <p>{this.props.message}</p>
         }
+
+        return taskFrom
+    }
+
+    render() {
         
         return(
             <React.Fragment>
@@ -97,7 +102,7 @@ class AddTask extends React.Component {
                         <FontAwesomeIcon icon="times" className="addTask__close"/>
                     </Button>
                     <div className='addTask'>
-                        {taskFrom}
+                        {this.tasksView()}
                     </div>
                 </Modal>
                 <Button clicked={this.changeAddFormVisibility} btnStyle='button--dark addTask__openForm' id="fixed">
