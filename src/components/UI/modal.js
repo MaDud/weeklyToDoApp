@@ -12,7 +12,7 @@ class Modal extends React.Component {
         return(
             <React.Fragment>
                 <Backdrop {...this.props}/>
-                <div className={['modal', !this.props.show? 'modal--invisible': null].join(' ')}>
+                <div className={['modal', !this.props.show? 'modal--invisible': null].join(' ')} data-test='modal'>
                     {this.props.children}
                 </div>
             </React.Fragment>
