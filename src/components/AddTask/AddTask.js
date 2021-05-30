@@ -7,6 +7,9 @@ import '../../styles/AddTask/addTask.scss';
 import {connect} from 'react-redux';
 import * as action from '../../store/actions/tasksActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import withLoadingHandler from '../../hoc/withLoadingHandler';
+
+const AddTaskFormWithLoadingHandler = withLoadingHandler(AddTaskForm);
 
 class AddTask extends React.Component {
 
@@ -75,15 +78,15 @@ class AddTask extends React.Component {
     }
 
     render() {
-        let taskFrom = <AddTaskForm title={this.state.newTask.title} 
+        let taskFrom = <AddTaskFormWithLoadingHandler
+            loading = {this.props.loading}
+            title={this.state.newTask.title} 
             description={this.state.newTask.description}
             inputChange={this.inputChange}
             clicked={this.addTaskProcess}
             disabled={this.state.newTask.title !== '' ? false : true}/>
         
-        if (this.props.loading) {
-            taskFrom = <Spinner />
-        } else if (this.props.error) {
+        if (this.props.error) {
             taskFrom = <p>{this.props.message}</p>
         }
         

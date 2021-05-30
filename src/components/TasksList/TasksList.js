@@ -3,9 +3,12 @@ import dayjs from 'dayjs';
 import {connect} from 'react-redux';
 import WeekTasks from './WeekTasks';
 import EmptyList from './EmptyList';
-import Spinner from '../UI/Spinner';
 import * as action from '../../store/actions/tasksActions';
 import {status, weekday} from './enums';
+import withLoadingHandler from '../../hoc/withLoadingHandler';
+
+const WeekTasksWithLoadingHandler = withLoadingHandler(WeekTasks);
+const EmptyListWithLoadingHandler = withLoadingHandler(EmptyList)
 
 class TasksList extends React.Component {
 
@@ -67,17 +70,16 @@ class TasksList extends React.Component {
     render() {
 
         const listLength = Object.keys(this.props.tasks).length;
-        let content = <Spinner/>;
+        let content = <EmptyListWithLoadingHandler loading={this.props.loading} /> ;
 
-        if (!this.props.loading && listLength>0) {
-            content = (<WeekTasks currentDay={this.props.date.isoWeekday() - 1}
+        if (listLength>0) {
+            content = (<WeekTasksWithLoadingHandler
+                loading={this.props.loading}
+                currentDay={this.props.date.isoWeekday() - 1}
                 weekTimestamps={this.weekTimestamps()}
                 tasks={this.props.tasks}
                 clicked={this.changeStatus}/>)
-        } else if (!this.props.loading && listLength === 0) {
-            content = <EmptyList /> 
-        }
-
+        } 
 
         return (
             <React.Fragment>

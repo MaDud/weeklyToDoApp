@@ -1,4 +1,4 @@
-import Spinner from '../UI/Spinner';
+import Spinner from '../components/UI/Spinner';
 
 export default (Component) => {
 
