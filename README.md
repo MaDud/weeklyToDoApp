@@ -5,6 +5,8 @@ It allows to plan and monitor tasks in week period.
 
 [Read more about Alistair Method](https://bulletjournal.com/blogs/bulletjournalist/to-do-the-alastair-method) 
 
+Demo: https://madud.github.io/weeklyToDoApp/
+
 ## General Info
 
 Do you have a lot of tasks on your head and you feel confused about that? Don't you know how to start organize your tasks step by step? This application can be answer to your problems. In one place you will be able to add tasks and monitore their status. You only need to have access to internet to start.
